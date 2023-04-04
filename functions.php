@@ -254,8 +254,9 @@ function formatMessage($vids, $title, &$message){
     }
 
     foreach ($vids as $vid) {
-        $message .= $vid->name .' ('.$vid->public_url . ") "
-	. " ".sprintf("(Миша: %s, Вера: %s)", $vid->Misha, $vid->Vera)
+        $message .= $vid->date_formatted . ' ' .  $vid->name
+	. " ".sprintf("(Мише: %s, Вере: %s)", $vid->Misha, $vid->Vera)
+    . ' Ссылка: '.$vid->public_url
 	 . PHP_EOL . PHP_EOL;
     }
 }
