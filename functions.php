@@ -79,7 +79,7 @@ die('wwtf');
     {
         $curl = curl_init();
         curl_setopt_array($curl, array(
-            CURLOPT_URL => 'https://cloud-api.yandex.net/v1/disk/resources?path=' . $path . '&offset=' . $offset . "&limit=".$limit,
+            CURLOPT_URL => 'https://cloud-api.yandex.net/v1/disk/resources?path=' . $path . '&offset=' . $offset . "&limit=".$limit . '&preview_size=300x300',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -262,7 +262,7 @@ function formatMessage($vids, $title, &$message){
 }
 
 //telegram
-function sendMessage($message) {
+function sendMessageTelegram($message) {
     $token = "6102912824:AAFxSg-DO6VoUCQ-TD3QPPcIN3X_pVh4KlI";
     $chatID = "5701250226";
 

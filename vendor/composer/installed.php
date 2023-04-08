@@ -1,0 +1,41 @@
+<?php return array(
+    'root' => array(
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
+        'type' => 'library',
+        'install_path' => __DIR__ . '/../../',
+        'aliases' => array(),
+        'reference' => '3c31a4c13eab380c1a6e78baa4162040c32d5f27',
+        'name' => '__root__',
+        'dev' => true,
+    ),
+    'versions' => array(
+        '__root__' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'reference' => '3c31a4c13eab380c1a6e78baa4162040c32d5f27',
+            'dev_requirement' => false,
+        ),
+        'green-api/whatsapp-api-client-php' => array(
+            'pretty_version' => 'v0.2',
+            'version' => '0.2.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../green-api/whatsapp-api-client-php',
+            'aliases' => array(),
+            'reference' => 'fcf9da11df970bc3832b3b1586f0d33fcd2948fa',
+            'dev_requirement' => false,
+        ),
+        'ultramsg/whatsapp-php-sdk' => array(
+            'pretty_version' => '2.0.7',
+            'version' => '2.0.7.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../ultramsg/whatsapp-php-sdk',
+            'aliases' => array(),
+            'reference' => 'a4287d176d8ec1a2c44e62d4d178103e2cefa360',
+            'dev_requirement' => false,
+        ),
+    ),
+);
