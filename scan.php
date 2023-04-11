@@ -3,11 +3,12 @@ require_once 'functions.php';
 $disk = new Disk();
 
 $templates = [
-    'disk:/Видео/%s',
-    'disk:/Видео_моменты/%s',
+    'moments'=>'disk:/Видео_моменты/%s',
+    'common'=>'disk:/Видео/%s',
 ];
 
-$years = range(2013, date('Y'));
+//$years = range(1996, date('Y'));
+$years = [1996, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023];
 
 $rescan_counter = 0;
 $my_files = [];
@@ -15,8 +16,10 @@ $errors = [];
 $Misha_bd = '2013-01-15';
 $Vera_bd  = '2016-04-19';
 
-foreach ($templates as $template) {
-    echo "Scanning: " . $template . PHP_EOL;
+$total_files = 0;
+foreach ($templates as $key=> $template) {
+    echo "Scanning $key: " . $template . PHP_EOL;
+    $my_files = [];
     foreach ($years as $year) {
 
         $param = sprintf($template, $year);
@@ -44,6 +47,7 @@ foreach ($templates as $template) {
                     var_dump("sharing: " . $filename);
                     $rescan_counter++;
                 } else {
+                    $total_files++;
                     $my_files[] = [
                         'unique_date' => $unique_day,
                         'date' => date('d.m.Y', strtotime($real_date)),
@@ -54,22 +58,26 @@ foreach ($templates as $template) {
                         'public_url' => $resource->public_url,
                         'Misha' => dateDiff($real_date, $Misha_bd),
                         'Vera' => dateDiff($real_date, $Vera_bd),
+                        'type'=>$key
                     ];
                 }
             }
         }
     }
+    $path = "disk:/playlist/playlist_$key.json";
+    $upload_URL = $disk->getPlaylistUploadURL($path);
+    $upload_status = $disk->uploadPlaylist($upload_URL, json_encode($my_files, JSON_UNESCAPED_UNICODE));
 }
-
-file_put_contents('json/errors.json', json_encode($errors, JSON_UNESCAPED_UNICODE));
-file_put_contents('json/history.json', json_encode($my_files, JSON_UNESCAPED_UNICODE));
+//Save errors
+$path = "disk:/playlist/errors.json";
+$upload_URL = $disk->getPlaylistUploadURL($path);
+$disk->uploadPlaylist($upload_URL, json_encode($errors, JSON_UNESCAPED_UNICODE));
 
 //Upload playlist
-$upload_URL = $disk->getPlaylistUploadURL();
-$upload_status = $disk->uploadPlaylist($upload_URL, file_get_contents('json/history.json'));
+
 
 echo "Erros: " . count($errors).PHP_EOL;
-echo "Files: " . count($my_files).PHP_EOL;
+echo "Files: " . $total_files.PHP_EOL;
 echo "Files to rescan: " . $rescan_counter.PHP_EOL;
 
 

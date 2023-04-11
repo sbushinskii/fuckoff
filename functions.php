@@ -142,9 +142,9 @@ die('wwtf');
         }
     }
 
-    public function getPlaylistUploadURL(){
+    public function getPlaylistUploadURL($path){
         $curl = curl_init();
-        $path = "Видео/playlist.json";
+
         curl_setopt_array($curl, array(
             CURLOPT_URL => 'https://cloud-api.yandex.net/v1/disk/resources/upload?path='.urlencode($path).'&overwrite=true',
             CURLOPT_RETURNTRANSFER => true,
@@ -237,9 +237,11 @@ function findVids($scan_day){
     $this_day_vids = [];
     foreach($files as $resource) {
         if (strtotime($resource->unique_date) >= strtotime($scan_day) && strtotime($resource->unique_date)<=strtotime($scan_day)) {
-            $this_day_vids[] = $resource;
+            $this_day_vids[$resource->type][] = $resource;
         }
     }
+
+
     return $this_day_vids;
 }
 
@@ -253,9 +255,15 @@ function formatMessage($vids, $title, &$message){
         $message .= PHP_EOL . $title . PHP_EOL.PHP_EOL;
     }
 
+
     foreach ($vids as $vid) {
+        if(!$vid->Vera){
+            $age = sprintf("(Мише: %s)", $vid->Misha);
+        } else {
+            $age = sprintf("(Мише: %s, Вере: %s)", $vid->Misha, $vid->Vera);
+        }
         $message .= $vid->date_formatted . ' ' .  $vid->name
-	. " ".sprintf("(Мише: %s, Вере: %s)", $vid->Misha, $vid->Vera)
+	. " ".$age
     . ' Ссылка: '.$vid->public_url
 	 . PHP_EOL . PHP_EOL;
     }
