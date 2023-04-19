@@ -33,6 +33,6 @@ $parts = explode(' ', $from);
 $from_path = $parts[0];
 $from_ext = explode('.', $from)[1];
 $to_path = $from_path . ' ' . $to . '.' . $from_ext;
-var_dump(urlencode($from), urlencode($to_path));die;
+
 $response = $disk->rename(urlencode($from), urlencode($to_path));
 var_dump($response);die;
