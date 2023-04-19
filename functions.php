@@ -188,10 +188,10 @@ die('wwtf');
         return json_decode($response);
     }
 
-    public function downloadPlaylist(){
+    public function downloadErrors(){
         $curl = curl_init();
 
-        $path = "Видео/playlist.json";
+        $path = "playlist/errors.json";
         curl_setopt_array($curl, array(
             CURLOPT_URL => 'https://cloud-api.yandex.net/v1/disk/resources/download?path='.urlencode($path),
             CURLOPT_RETURNTRANSFER => true,
@@ -210,13 +210,79 @@ die('wwtf');
         $response = curl_exec($curl);
 
         curl_close($curl);
-        $href = json_decode($response)->href;
+        $response = json_decode($response);
+        if (isset($response->error)) {
+            echo $response->message;exit;
+        }
+        //var_dump($response);die;
+        $href = $response->href;
         if(trim($href)){
-            @unlink(__DIR__ .'/json/history.json');
-            file_put_contents(__DIR__ . '/json/history.json', file_get_contents($href));
+            @unlink(__DIR__ .'/json/errors.json');
+            file_put_contents(__DIR__ . '/json/errors.json', file_get_contents($href));
         } else {
             exit('Error playlist download');
         }
+    }
+
+    public function downloadPlaylist($type){
+        $curl = curl_init();
+
+        $path = "playlist/playlist_".$type.".json";
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://cloud-api.yandex.net/v1/disk/resources/download?path='.urlencode($path),
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'GET',
+            CURLOPT_HTTPHEADER => array(
+                ': ',
+                'Authorization: OAuth '.$this->token
+            ),
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+        $response = json_decode($response);
+        if (isset($response->error)) {
+           echo $response->message;exit;
+        }
+        //var_dump($response);die;
+        $href = $response->href;
+        if(trim($href)){
+            @unlink(__DIR__ .'/json/playlist_'.$type.'.json');
+            file_put_contents(__DIR__ . '/json/playlist_'.$type.'.json', file_get_contents($href));
+        } else {
+            exit('Error playlist download');
+        }
+    }
+
+    public function rename($from, $to) {
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://cloud-api.yandex.net/v1/disk/resources/move?from='.$from.'&path='.$to,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_HTTPHEADER => array(
+                ': ',
+                'Authorization: ' . $this->token
+            ),
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+        echo $response;
+
     }
 }
 
@@ -228,13 +294,14 @@ function listErrors(){
 }
 
 function countVids(){
-    $vids = json_decode(file_get_contents(__DIR__ . '/json/history.json'));
+    $vids = json_decode(file_get_contents(__DIR__ . '/json/playlist_common.json'));
     return count($vids);
 }
 
-function findVids($scan_day){
-    $files = json_decode(file_get_contents(__DIR__ . '/json/history.json'));
+function findVids($scan_day, $type){
+    $files = json_decode(file_get_contents(__DIR__ . '/json/playlist_'.$type.'.json'));
     $this_day_vids = [];
+
     foreach($files as $resource) {
         if (strtotime($resource->unique_date) >= strtotime($scan_day) && strtotime($resource->unique_date)<=strtotime($scan_day)) {
             $this_day_vids[$resource->type][] = $resource;
@@ -250,11 +317,10 @@ function getUniqueDate($real_date){
     return str_replace($date_parts[0],'1970', $real_date);
 }
 
-function formatMessage($vids, $title, &$message){
+function formatMessage($vids, $title, &$message, $debug = false){
     if(!empty($vids)){
         $message .= PHP_EOL . $title . PHP_EOL.PHP_EOL;
     }
-
 
     foreach ($vids as $vid) {
         if(!$vid->Vera){
@@ -262,9 +328,10 @@ function formatMessage($vids, $title, &$message){
         } else {
             $age = sprintf("(Мише: %s, Вере: %s)", $vid->Misha, $vid->Vera);
         }
+        $extra = $debug ? ' '.$vid->path : '';
         $message .= $vid->date_formatted . ' ' .  $vid->name
 	. " ".$age
-    . ' Ссылка: '.$vid->public_url
+    . ' Ссылка: '.$vid->public_url . $extra
 	 . PHP_EOL . PHP_EOL;
     }
 }
