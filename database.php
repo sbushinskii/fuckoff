@@ -16,6 +16,7 @@ class Database {
         $string = "INSERT INTO ".$table_name." (";
         $string .= implode(",", array_keys($data)) . ') VALUES (';
         $string .= "'" . implode("','", array_values($data)) . "')";
+        echo $string;die;
         if(mysqli_query($this->con, $string))
         {
             return true;
@@ -24,5 +25,13 @@ class Database {
         {
             echo mysqli_error($this->con);
         }
+    }
+
+    public function update($table_name, $key, $data) {
+
+    }
+
+    public function process($table_name, $key, $data) {
+        //todo if found by het then insert else update
     }
 }
