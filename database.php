@@ -16,7 +16,7 @@ class Database {
         $string = "INSERT INTO ".$table_name." (";
         $string .= implode(",", array_keys($data)) . ') VALUES (';
         $string .= "'" . implode("','", array_values($data)) . "')";
-        echo $string;die;
+
         if(mysqli_query($this->con, $string))
         {
             return true;
