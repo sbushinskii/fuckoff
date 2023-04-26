@@ -1,4 +1,5 @@
 <?php
+require_once 'database.php';
 require_once 'functions.php';
 $disk = new Disk();
 
@@ -14,6 +15,8 @@ if(isset($argv[1])){
     //$years = [1996, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023];
     $years = [ 2017, 2018, 2019, 2020, 2021, 2022, 2023];
 }
+
+$DB = new Database();
 
 $rescan_counter = 0;
 $my_files = [];
@@ -38,13 +41,6 @@ foreach ($templates as $key=> $template) {
             $date = strtotime($date_meta);
             $filename_no_extension = pathinfo($resource->name, PATHINFO_FILENAME);
             $filename = trim(str_replace($date_meta, '', $filename_no_extension));
-
-            $db[] = [
-                'id' => $resource->resource_id,
-                'name' => $resource->name,
-                'public_url' => $resource->public_url,
-                'path' => $resource->path,
-            ];
 
             $real_date = date('Y-m-d', $date);
             if ($real_date == '1970-01-01') {
@@ -74,6 +70,20 @@ foreach ($templates as $key=> $template) {
                         'Vera' => dateDiff($real_date, $Vera_bd),
                         'type'=>$key
                     ];
+
+                    $db = [
+                        'resource_id' => $resource->resource_id,
+                        'unique_date' => $unique_day,
+                        'date' => date('d.m.Y', strtotime($real_date)),
+                        'date_formatted' => date('d.m.Y', strtotime($real_date)),
+                        'path' => $resource->path,
+                        'name' => $filename,
+                        'public_url' => $resource->public_url,
+                        'Misha' => dateDiff($real_date, $Misha_bd),
+                        'Vera' => dateDiff($real_date, $Vera_bd),
+                        'type'=>$key
+                    ];
+                    $DB->insert('videos', $db);
                 }
             }
         }
