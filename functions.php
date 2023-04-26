@@ -357,11 +357,15 @@ function sendMessageTelegram($message) {
     return $result;
 }
 
-function dateDiff($date1, $date2){
+function dateDiff($date1, $date2, $debug = false){
     $diff = abs(strtotime($date2) - strtotime($date1));
 
     $years = floor($diff / (365*60*60*24));
     $months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
+    if($debug) {
+        var_dump($years);;
+        var_dump($diff);die;
+    }
     //$days = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
     if($years) {
         switch ($years){
@@ -383,6 +387,9 @@ function dateDiff($date1, $date2){
 }
 
 function formatMonthString($years_template, $years, $months){
+    if($months == 0){
+        return sprintf($years_template, $years);
+    }
     if($months == 1){
         if(trim($years_template)) {
             return sprintf($years_template . " и %d месяц", $years, $months);

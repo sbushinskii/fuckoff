@@ -11,7 +11,8 @@ $templates = [
 if(isset($argv[1])){
     $years = [$argv[1]];
 } else {
-    $years = [1996, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023];
+    //$years = [1996, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023];
+    $years = [ 2017, 2018, 2019, 2020, 2021, 2022, 2023];
 }
 
 $rescan_counter = 0;
@@ -19,11 +20,12 @@ $my_files = [];
 $errors = [];
 $Misha_bd = '2013-01-15';
 $Vera_bd  = '2016-04-19';
-
+$db = [];
 $total_files = 0;
 foreach ($templates as $key=> $template) {
     echo "Scanning $key: " . $template . PHP_EOL;
     $my_files = [];
+
     foreach ($years as $year) {
 
         $param = sprintf($template, $year);
@@ -31,10 +33,18 @@ foreach ($templates as $key=> $template) {
 
         echo "Processing " . $year . PHP_EOL;
         foreach ($files as $resource) {
+
             $date_meta = explode(' ', $resource->name)[0];
             $date = strtotime($date_meta);
             $filename_no_extension = pathinfo($resource->name, PATHINFO_FILENAME);
             $filename = trim(str_replace($date_meta, '', $filename_no_extension));
+
+            $db[] = [
+                'id' => $resource->resource_id,
+                'name' => $resource->name,
+                'public_url' => $resource->public_url,
+                'path' => $resource->path,
+            ];
 
             $real_date = date('Y-m-d', $date);
             if ($real_date == '1970-01-01') {
@@ -72,6 +82,11 @@ foreach ($templates as $key=> $template) {
     $upload_URL = $disk->getPlaylistUploadURL($path);
     $upload_status = $disk->uploadPlaylist($upload_URL, json_encode($my_files, JSON_UNESCAPED_UNICODE));
 }
+
+$path = "disk:/playlist/db.json";
+$upload_URL = $disk->getPlaylistUploadURL($path);
+$upload_status = $disk->uploadPlaylist($upload_URL, json_encode($db, JSON_UNESCAPED_UNICODE));
+
 //Save errors
 $path = "disk:/playlist/errors.json";
 $upload_URL = $disk->getPlaylistUploadURL($path);
