@@ -10,6 +10,7 @@ class Database {
         {
             echo 'Database Connection Error ' . mysqli_connect_error($this->con);
         }
+        mysqli_set_charset($this->con,"utf8");
     }
     public function insert($table_name, $data)
     {
