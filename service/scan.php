@@ -1,6 +1,6 @@
 <?php
-require_once 'database.php';
-require_once 'functions.php';
+require_once '../database.php';
+require_once '../functions.php';
 $disk = new Disk();
 
 $templates = [
@@ -12,8 +12,7 @@ $templates = [
 if(isset($argv[1])){
     $years = [$argv[1]];
 } else {
-    //$years = [1996, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023];
-    $years = [ 2017, 2018, 2019, 2020, 2021, 2022, 2023];
+    $years = [1996, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023];
 }
 
 $DB = new Database();
@@ -28,15 +27,14 @@ $total_files = 0;
 foreach ($templates as $key=> $template) {
     echo "Scanning $key: " . $template . PHP_EOL;
     $my_files = [];
-
     foreach ($years as $year) {
 
         $param = sprintf($template, $year);
+
         $files = $disk->getFiles(urlencode($param), 1000);
 
         echo "Processing " . $year . PHP_EOL;
         foreach ($files as $resource) {
-
             $date_meta = explode(' ', $resource->name)[0];
             $date = strtotime($date_meta);
             $filename_no_extension = pathinfo($resource->name, PATHINFO_FILENAME);
@@ -72,7 +70,7 @@ foreach ($templates as $key=> $template) {
                     ];
 
                     $db = [
-                        'resource_id' => $resource->resource_id,
+                        'resource_id' => $resource->md5,
                         'unique_date' => $unique_day,
                         'date' => date('d.m.Y', strtotime($real_date)),
                         'date_formatted' => date('d.m.Y', strtotime($real_date)),
@@ -83,7 +81,12 @@ foreach ($templates as $key=> $template) {
                         'Vera' => dateDiff($real_date, $Vera_bd),
                         'type'=>$key
                     ];
-                    $DB->insert('videos', $db);
+
+                    if(!$DB->getVideo($resource->md5)) {
+                        $DB->insert('videos', $db);
+                    } else {
+
+                    }
                 }
             }
         }
