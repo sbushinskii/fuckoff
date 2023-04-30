@@ -8,7 +8,8 @@ $disk = new Disk();
 $message = '';
 $date = getUniqueDate(date('Y-m-d'));
 
-$types = ['common','moments'];
+//$types = ['common','moments'];
+$types = ['common'];
 foreach($types as $type) {
     $disk->downloadPlaylist($type);
     $this_day_vids_data = findVids($date, $type);

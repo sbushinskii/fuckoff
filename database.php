@@ -94,16 +94,22 @@ class Database {
         $result_count = mysqli_query($this->con,"SELECT * FROM `tags` WHERE id='$tag_id'");
         $record = mysqli_fetch_array($result_count);
         if($record){
-            return$ $record;
+            return $record;
         }
         return false;
     }
 
-    public function update($table_name, $key, $data) {
-
+    public function update($table_name, $resource_id, $key, $value) {
+        $query = "UPDATE `$table_name` SET $key='$value' WHERE resource_id='$resource_id'";
+        if(mysqli_query($this->con, $query))
+        {
+            return true;
+        }
+        else
+        {
+            echo mysqli_error($this->con);die;
+        }
     }
 
-    public function process($table_name, $key, $data) {
-        //todo if found by het then insert else update
-    }
+
 }

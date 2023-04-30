@@ -4,31 +4,46 @@ ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
 require_once 'database.php';
+require_once 'functions.php';
 $db = new Database();
 
 if(!empty($_POST)) {
     $video_id = $_POST['resource_id'];
-    //$db->clearTags($video_id);
+    $db->clearTags($video_id);
 
     //save tags
     $tag_ids = [];
-    foreach ($_POST['tags_new'] as $tag_name) {
-        if(!(int)$tag_name+0){
-            $record = [
-                'title'=>$tag_name
+    if(isset($_POST['tags_new'])) {
+        foreach ($_POST['tags_new'] as $tag_name) {
+            if (!(int)$tag_name + 0) {
+                $record = [
+                    'title' => $tag_name
+                ];
+                $tag_id = $db->insert('tags', $record);
+            } else {
+                $tag_id = $tag_name;
+            }
+            $tags = [
+                'tag_id' => $tag_id,
+                'video_id' => $video_id,
             ];
-            $tag_id = $db->insert('tags',$record);
-        } else {
-            $tag_id = $tag_name;
+            $status = $db->insert('video_tag', $tags);
         }
-        $tags = [
-            'tag_id' => $tag_id,
-            'video_id' => $video_id,
-        ];
-        $status = $db->insert('video_tag', $tags);
+    }
+    if($_POST['path'] !== $_POST['old_path']) {
+        $new_path = $_POST['path'];
+        $disk = new Disk();
+        $disk->rename(urlencode($_POST['old_path']), urlencode($new_path));
+
+        $date_meta = explode(' ', $new_path)[0];
+        $date = strtotime($date_meta);
+        $filename_no_extension = pathinfo($new_path, PATHINFO_FILENAME);
+        $filename = trim(str_replace($date_meta, '', $filename_no_extension));
+
+        $db->update('videos', $video_id, 'name', $filename);
+        $db->update('videos', $video_id, 'path', $new_path);
     }
 }
-
 
 
 ?>
@@ -57,33 +72,6 @@ if(!empty($_POST)) {
         // Multiple inits should not matter
         Tags.init("select:not(.ignore-tags)");
 
-        document.addEventListener("change", (event) => {
-            console.log(`document listener: #${event.target.id}`);
-        });
-
-        document.querySelector("#show_suggestions").addEventListener("click", (ev) => {
-            ev.preventDefault();
-
-            const el = document.getElementById("inputGroupTags");
-            /** @type {Tags} */
-            let inst = Tags.getInstance(el);
-            inst.toggleSuggestions(false);
-        });
-
-        document.querySelector('#add_option').addEventListener("click", (ev) => {
-            ev.preventDefault();
-
-            const input = document.getElementById('new_option');
-            const v = input.value;
-            if(!v) {
-                alert('No value');
-                return;
-            }
-            const el = document.getElementById('validationTagsNew');
-            const inst = Tags.getInstance(el);
-            inst.addItem(v);
-        })
-
         FormValidator.init();
     </script>
 
@@ -98,7 +86,7 @@ if(!empty($_POST)) {
     <th style='width:50px;'>ID</th>
     <th style='width:150px;'>Дата</th>
     <th style='width:50px;'>Название</th>
-    <th style='width:150px;'>Ссылка</th>
+    <th style='width:50px;'>Путь</th>
     <th style='width:450px;'>Тэги</th>
 </tr>
 </thead>
@@ -124,40 +112,44 @@ if (isset($_GET['page_no']) && $_GET['page_no']!="") {
     $total_no_of_pages = ceil($total_records / $total_records_per_page);
 	$second_last = $total_no_of_pages - 1; // total page minus 1
 
-    $result = mysqli_query($db->con,"SELECT * FROM `videos`  LIMIT $offset, $total_records_per_page");
+    $result = mysqli_query($db->con,"SELECT * FROM `videos` LIMIT $offset, $total_records_per_page");
     $tags = $db->getTags();
 
     while($row = mysqli_fetch_array($result)){
         $assignedTags = $db->getVideoTagsIds($row['resource_id']);
         ?>
-		<tr>
-			    <td><?php echo $row['id'];?></td>
-                <td><?php echo $row['date'];?></td>
-                <td><?php echo $row['name'];?></td>
-		   	    <td><a target='_blank' href='<?php echo $row['public_url'];?>'>открыть</a></td>
+        <form class='needs-validation' method='POST'>
+            <tr>
+                    <td><?php echo $row['id'];?></td>
+                    <td><?php echo $row['date'];?></td>
+                    <td><?php echo $row['name'];?></td>
+                    <td>
+                        <a target='_blank' href='<?php echo $row['public_url'];?>'>Открыть</a><br><br>
+                        <textarea name="path"><?php echo $row['path'];?></textarea>
+                        <input type="hidden" name="old_path" value="<?php echo $row['path'];?>">
+                    </td>
+                 <td>
 
-             <td>
-		   	  <form class='needs-validation' method='POST'>
-                  <input type="hidden" name="resource_id" value="<?php echo $row['resource_id'];?>">
-                    <div class='row mb-3 g-3'>
-                      <div>
-                        <label for='validationTagsNewSame' class='form-label'>Тэг</label>
-                        <select class='form-select' id='validationTagsNewSame' name='tags_new[]' multiple data-allow-new='true' data-allow-same='true'>
-                          <option disabled hidden value=''>Выбор тэга...</option>
-                            <?php foreach ($tags as $tag) {
-                                $is_selected = in_array($tag['id'], $assignedTags);
+                      <input type="hidden" name="resource_id" value="<?php echo $row['resource_id'];?>">
+                        <div class='row mb-3 g-3'>
+                          <div>
+                            <select class='form-select' id='validationTagsNewSame' name='tags_new[]' multiple data-allow-new='true' data-allow-same='true'>
+                              <option disabled hidden value=''>Выбор тэга...</option>
+                                <?php foreach ($tags as $tag) {
+                                    $is_selected = in_array($tag['id'], $assignedTags);
+                                    ?>
+                                    <option value="<?php echo $tag["id"];?>" <?php echo ($is_selected) ? " selected ":"";?>><?php echo $tag["title"];?></option>
+                                <?php
+                                }
                                 ?>
-                                <option value="<?php echo $tag["id"];?>" <?php echo ($is_selected) ? " selected ":"";?>><?php echo $tag["title"];?></option>
-                            <?php
-                            }
-                            ?>
-                        </select>
-                      </div>
-                    </div>
-                  <button class='btn btn-primary' type='submit'>Сохранить</button>
-              </form>
-            </td>
-      </tr>
+                            </select>
+                          </div>
+                        </div>
+                      <button class='btn btn-primary' type='submit'>Сохранить</button>
+
+                </td>
+          </tr>
+        </form>
     <?php
         }
 	mysqli_close($db->con);
