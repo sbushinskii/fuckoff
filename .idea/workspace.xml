@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3d20f51f-ca6b-46cb-a486-949e67a58c02" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/get_videos.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tags.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/database.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="$PROJECT_DIR$/.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration">
+    <include_path>
+      <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/green-api/whatsapp-api-client-php" />
+    </include_path>
+  </component>
+  <component name="ProjectId" id="2NyVUVgaoyT3AaYii7pvjAeGB5K" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/test" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/test" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/assets/css" />
+      <recent name="$PROJECT_DIR$/tags" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/assets/js" />
+      <recent name="$PROJECT_DIR$/assets/css" />
+      <recent name="$PROJECT_DIR$/assets" />
+      <recent name="$PROJECT_DIR$/service" />
+      <recent name="$PROJECT_DIR$/tags" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3d20f51f-ca6b-46cb-a486-949e67a58c02" name="Default Changelist" comment="" />
+      <created>1680636325014</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1680636325014</updated>
+      <workItem from="1680636326191" duration="2293000" />
+      <workItem from="1680638688686" duration="385000" />
+      <workItem from="1680808406934" duration="1420000" />
+      <workItem from="1680983013848" duration="4300000" />
+      <workItem from="1681158402780" duration="694000" />
+      <workItem from="1681160320006" duration="2501000" />
+      <workItem from="1681247081967" duration="1492000" />
+      <workItem from="1681297960204" duration="1970000" />
+      <workItem from="1681414446620" duration="599000" />
+      <workItem from="1681933198428" duration="9174000" />
+      <workItem from="1682490077605" duration="3522000" />
+      <workItem from="1682713265238" duration="4692000" />
+      <workItem from="1682752950471" duration="4568000" />
+      <workItem from="1682852694386" duration="8563000" />
+      <workItem from="1682949884572" duration="264000" />
+      <workItem from="1682950837958" duration="6946000" />
+      <workItem from="1683007856601" duration="5082000" />
+    </task>
+    <task id="LOCAL-00001" summary="Corrections">
+      <created>1680639053059</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1680639053059</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Send message via Whatsup">
+      <created>1680989059538</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1680989059538</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Corrections">
+      <created>1681247853079</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1681247853079</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Corrections">
+      <created>1681937963277</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1681937963278</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Corrections">
+      <created>1681939861650</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1681939861650</updated>
+    </task>
+    <task id="LOCAL-00006" summary="db">
+      <created>1682543004641</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1682543004641</updated>
+    </task>
+    <task id="LOCAL-00007" summary="db">
+      <created>1682543175368</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1682543175368</updated>
+    </task>
+    <task id="LOCAL-00008" summary="sasai">
+      <created>1682544122739</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1682544122739</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Fuck you">
+      <created>1682544368733</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1682544368733</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Fuck you">
+      <created>1682544545552</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1682544545552</updated>
+    </task>
+    <task id="LOCAL-00011" summary="fuck">
+      <created>1682718506375</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1682718506375</updated>
+    </task>
+    <task id="LOCAL-00012" summary="fuck">
+      <created>1682855506020</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1682855506020</updated>
+    </task>
+    <task id="LOCAL-00013" summary="fuck">
+      <created>1682856529637</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1682856529638</updated>
+    </task>
+    <task id="LOCAL-00014" summary="fuck">
+      <created>1682892595900</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1682892595900</updated>
+    </task>
+    <task id="LOCAL-00015" summary="ФАк оф">
+      <created>1682972896478</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1682972896478</updated>
+    </task>
+    <task id="LOCAL-00016" summary="LOL">
+      <created>1682973216936</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1682973216936</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Fix bootstrap">
+      <created>1683008243707</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1683008243707</updated>
+    </task>
+    <task id="LOCAL-00018" summary="SOrt by tags">
+      <created>1683009216454</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1683009216454</updated>
+    </task>
+    <task id="LOCAL-00019" summary="DB">
+      <created>1683009398796</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1683009398796</updated>
+    </task>
+    <task id="LOCAL-00020" summary="DB">
+      <created>1683009460984</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1683009460984</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Send message via Whatsup" />
+    <MESSAGE value="Corrections" />
+    <MESSAGE value="db" />
+    <MESSAGE value="sasai" />
+    <MESSAGE value="Fuck you" />
+    <MESSAGE value="fuck" />
+    <MESSAGE value="ФАк оф" />
+    <MESSAGE value="LOL" />
+    <MESSAGE value="Fix bootstrap" />
+    <MESSAGE value="SOrt by tags" />
+    <MESSAGE value="DB" />
+    <option name="LAST_COMMIT_MESSAGE" value="DB" />
+  </component>
+</project>

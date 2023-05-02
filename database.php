@@ -28,10 +28,40 @@ class Database {
         while($row = mysqli_fetch_array($result)) {
             $tags[] = [
                 'id'=>$row['id'],
-                'title'=>$row['title']
+                'title'=>$row['title'],
+                'counter'=>$row['counter']
             ];
         }
         return $tags;
+    }
+
+    public function getTag($tag_id){
+        $sql="SELECT * FROM  tags where id = ".$tag_id;
+        $tags = [];
+        $result = mysqli_query($this->con, $sql);
+        while($row = mysqli_fetch_array($result)) {
+            $tag = [
+                'id'=>$row['id'],
+                'title'=>$row['title'],
+                'counter'=>$row['counter']
+            ];
+        }
+        return $tag;
+    }
+
+    public function findVideosByTag($tag_id){
+        $sql = "SELECT * FROM `video_tag` vt LEFT JOIN videos v ON v.id = vt.video_id WHERE vt.tag_id=$tag_id";
+
+        $result = mysqli_query($this->con, $sql);
+        while($row = mysqli_fetch_array($result)) {
+
+            $vids[] = [
+                'path'=>$row['path'],
+                'public_url'=>$row['public_url'],
+                'name'=>$row['name']
+            ];
+        }
+        return $vids;
     }
 
     public function getTopTags($limit=4){
