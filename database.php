@@ -13,8 +13,13 @@ class Database {
         mysqli_set_charset($this->con,"utf8");
     }
 
+    public function recalculateTagsUsage(){
+        $sql = 'UPDATE tags t SET counter = (select count(*) as cnt from video_tag vt where vt.tag_id = t.id) where 1;';
+        mysqli_query($this->con, $sql);
+    }
+
     public function getTags(){
-        $sql="SELECT * FROM  tags";
+        $sql="SELECT * FROM  tags ORDER BY counter DESC";
         $tags = [];
         $result = mysqli_query($this->con, $sql);
         while($row = mysqli_fetch_array($result)) {
@@ -22,6 +27,29 @@ class Database {
                 'id'=>$row['id'],
                 'title'=>$row['title']
             ];
+        }
+        return $tags;
+    }
+
+    public function getTopTags($limit=4){
+        $sql="SELECT * FROM  tags ORDER BY counter DESC LIMIT 0,$limit";
+        $tags = [];
+        $result = mysqli_query($this->con, $sql);
+        while($row = mysqli_fetch_array($result)) {
+            $tags[] = [
+                'id'=>$row['id'],
+                'title'=>$row['title']
+            ];
+        }
+        return $tags;
+    }
+
+    public function getTopTagsIds($limit=4){
+        $sql="SELECT * FROM  tags ORDER BY counter DESC LIMIT 0,$limit";
+        $tags = [];
+        $result = mysqli_query($this->con, $sql);
+        while($row = mysqli_fetch_array($result)) {
+            $tags[] = $row['id'];
         }
         return $tags;
     }

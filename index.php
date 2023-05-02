@@ -114,9 +114,13 @@ if (isset($_GET['page_no']) && $_GET['page_no']!="") {
 
     $result = mysqli_query($db->con,"SELECT * FROM `videos` LIMIT $offset, $total_records_per_page");
     $tags = $db->getTags();
+    $defaultTagIds = $db->getTopTagsIds();
 
     while($row = mysqli_fetch_array($result)){
         $assignedTags = $db->getVideoTagsIds($row['resource_id']);
+        if(empty($assignedTags)) {
+            $assignedTags = $defaultTagIds;
+        }
         ?>
         <form class='needs-validation' method='POST'>
             <tr>
