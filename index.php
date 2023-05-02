@@ -131,7 +131,7 @@ if (isset($_GET['page_no']) && $_GET['page_no']!="") {
                  <td>
 
                       <input type="hidden" name="resource_id" value="<?php echo $row['resource_id'];?>">
-                        <div class='row mb-3 g-3'>
+                        <div class='col-sm-9'>
                           <div>
                             <select class='form-select' id='validationTagsNewSame' name='tags_new[]' multiple data-allow-new='true' data-allow-same='true'>
                               <option disabled hidden value=''>Выбор тэга...</option>
