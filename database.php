@@ -4,8 +4,11 @@ class Database {
     public $con;
     public function __construct()
     {
-        //$this->con = mysqli_connect("localhost", "root", "yvgWrM6IT2ZVr66f", "u2036503_default");
-        $this->con = mysqli_connect("localhost", "root", "123", "today");
+        if($_SERVER['REMOTE_ADDR'] == '89.107.139.125') {
+            $this->con = mysqli_connect("localhost", "root", "yvgWrM6IT2ZVr66f", "u2036503_default");
+        } else {
+            $this->con = mysqli_connect("localhost", "root", "123", "today");
+        }
         if(!$this->con)
         {
             echo 'Database Connection Error ' . mysqli_connect_error($this->con);die;
