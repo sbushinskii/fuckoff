@@ -50,7 +50,7 @@ class Database {
     }
 
     public function findVideosByTag($tag_id){
-        $sql = "SELECT * FROM `video_tag` vt LEFT JOIN videos v ON v.id = vt.video_id WHERE vt.tag_id=$tag_id";
+        $sql = "select * from videos where resource_id in ( SELECT video_id FROM `video_tag` vt WHERE vt.tag_id=$tag_id)";
 
         $result = mysqli_query($this->con, $sql);
         while($row = mysqli_fetch_array($result)) {
@@ -58,7 +58,8 @@ class Database {
             $vids[] = [
                 'path'=>$row['path'],
                 'public_url'=>$row['public_url'],
-                'name'=>$row['name']
+                'name'=>$row['name'],
+                'id'=>$row['id'],
             ];
         }
         return $vids;
