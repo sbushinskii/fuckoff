@@ -80,6 +80,9 @@ if(!empty($_POST)) {
 <div >
 
 <h3>Мои Видео</h3>
+    <a href="tags.php">
+        <h2>Тэги</h2>
+    </a>
 <table class="table table-striped table-bordered">
 <thead>
 <tr>
