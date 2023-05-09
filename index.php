@@ -115,7 +115,7 @@ if (isset($_GET['page_no']) && $_GET['page_no']!="") {
                     <td>
                         <a target='_blank' href='<?php echo $row['public_url'];?>'><?php echo $row['name'];?></a>
                         <br>
-                        <a href="video-edit.php?resource_id=<?php echo $row['resource_id'];?>">(редактировать)</a>
+                        <a target='_blank' href="video-edit.php?resource_id=<?php echo $row['resource_id'];?>">(редактировать)</a>
                     </td>
                     <td>
                         <textarea name="path"><?php echo $row['path'];?></textarea>
