@@ -175,5 +175,17 @@ class Database {
         }
     }
 
+    public function delete($table_name, $resource_id) {
+        $query = "DELETE FROM `$table_name` WHERE resource_id='$resource_id'";
+        if(mysqli_query($this->con, $query))
+        {
+            return true;
+        }
+        else
+        {
+            echo mysqli_error($this->con);die;
+        }
+    }
+
 
 }

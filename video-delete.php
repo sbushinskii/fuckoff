@@ -13,12 +13,14 @@ if(!empty($_GET['resource_id'])) {
     $result = mysqli_query($db->con,"SELECT * FROM `videos` $filter");
     $row = mysqli_fetch_array($result);
     if($row) {
-        $db->update('videos', $video_id, 'is_active', 0);
-        $db->update('videos', $video_id, 'is_deleted', 1);
+//        $db->update('videos', $video_id, 'is_active', 0);
+//        $db->update('videos', $video_id, 'is_deleted', 1);
 
         $disk = new Disk();
         $status = $disk->removeFile($row['path']);
-        var_dump($status);
+
+        $db->delete('videos', $_GET['resource_id']);
+        echo "OK";
     } else {
         echo "Ресурс не найден";
     }
