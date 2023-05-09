@@ -8,7 +8,7 @@ require_once 'functions.php';
 $db = new Database();
 
 if(isset($_GET['send'])){
-    sendTodayVideos();
+    sendTodayVideos($all = true);
 }
 
 if(!empty($_POST)) {

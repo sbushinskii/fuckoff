@@ -413,12 +413,15 @@ function formatMonthString($years_template, $years, $months){
     }
 }
 
-function sendTodayVideos(){
+function sendTodayVideos($all = false){
     $disk = new Disk();
     $message = '';
     $date = getUniqueDate(date('Y-m-d'));
-    //$types = ['common','moments'];
-    $types = ['common'];
+    if($all) {
+        $types = ['common', 'moments'];
+    } else {
+        $types = ['common'];
+    }
     foreach($types as $type) {
         $disk->downloadPlaylist($type);
         $this_day_vids_data = findVids($date, $type);
