@@ -9,14 +9,14 @@ $tags = $db->getTags();
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Tags</title>
+    <title>Мои метки</title>
 </head>
 <body>
     <h1>Мои видео метки</h1>
-
+    <?php require_once 'nav.php';?>
     <?php
         foreach ($tags as $tag) { ?>
-            <a href="get_videos.php?tag_id=<?php echo $tag['id'];?>"><?php echo $tag['title'];?> (<?php echo $tag['counter'];?>)</a><br>
+            <a href="tag.php?id=<?php echo $tag['id'];?>"><?php echo $tag['title'];?> (<?php echo $tag['counter'];?>)</a><br>
     <?php
         }
     ?>

@@ -2,9 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3d20f51f-ca6b-46cb-a486-949e67a58c02" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/header.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nav.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tag-edit.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tag.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/today.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/video-delete.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/video-edit.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/database.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/functions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/get_videos.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/json/errors.json" beforeDir="false" afterPath="$PROJECT_DIR$/json/errors.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/json/playlist_common.json" beforeDir="false" afterPath="$PROJECT_DIR$/json/playlist_common.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/today.php" beforeDir="false" afterPath="$PROJECT_DIR$/service/today.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tags.php" beforeDir="false" afterPath="$PROJECT_DIR$/tags.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -46,12 +59,13 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/test" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="PHP" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/test" />
       <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/test" />
       <recent name="$PROJECT_DIR$/assets/css" />
       <recent name="$PROJECT_DIR$/tags" />
     </key>
@@ -101,7 +115,9 @@
       <workItem from="1682852694386" duration="8563000" />
       <workItem from="1682949884572" duration="264000" />
       <workItem from="1682950837958" duration="6946000" />
-      <workItem from="1683007856601" duration="7541000" />
+      <workItem from="1683007856601" duration="8588000" />
+      <workItem from="1683640413243" duration="1299000" />
+      <workItem from="1683641750436" duration="3595000" />
     </task>
     <task id="LOCAL-00001" summary="Corrections">
       <created>1680639053059</created>
@@ -250,7 +266,35 @@
       <option name="project" value="LOCAL" />
       <updated>1683058507754</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="DB">
+      <created>1683144115930</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1683144115930</updated>
+    </task>
+    <task id="LOCAL-00023" summary="DB">
+      <created>1683144318354</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1683144318354</updated>
+    </task>
+    <task id="LOCAL-00024" summary="DB">
+      <created>1683144340116</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1683144340116</updated>
+    </task>
+    <task id="LOCAL-00025" summary="DB">
+      <created>1683640437806</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1683640437806</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

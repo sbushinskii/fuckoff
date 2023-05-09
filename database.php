@@ -60,6 +60,8 @@ class Database {
                 'public_url'=>$row['public_url'],
                 'name'=>$row['name'],
                 'id'=>$row['id'],
+                'date'=>$row['date'],
+                'resource_id'=>$row['resource_id'],
             ];
         }
         return $vids;

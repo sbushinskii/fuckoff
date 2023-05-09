@@ -337,11 +337,11 @@ function formatMessage($vids, $title, &$message, $debug = false){
 }
 
 //telegram
-function sendMessageTelegram($message) {
+function sendMessageTelegram($message, $debug = false) {
     $token = "6102912824:AAFxSg-DO6VoUCQ-TD3QPPcIN3X_pVh4KlI";
     $chatID = "5701250226";
 
-    echo "sending message to " . $chatID . "\n";
+    echo ($debug) ? "sending message to " . $chatID . "\n" : "";
 
     $url = "https://api.telegram.org/bot" . $token . "/sendMessage?chat_id=" . $chatID;
     $url = $url . "&text=" . urlencode($message);
@@ -353,7 +353,7 @@ function sendMessageTelegram($message) {
     curl_setopt_array($ch, $optArray);
     $result = curl_exec($ch);
     curl_close($ch);
-    print_r(json_encode($result));
+    if($debug)print_r(json_encode($result));
     return $result;
 }
 
@@ -411,4 +411,28 @@ function formatMonthString($years_template, $years, $months){
             return sprintf("%d месяцев", $months);
         }
     }
+}
+
+function sendTodayVideos(){
+    $disk = new Disk();
+    $message = '';
+    $date = getUniqueDate(date('Y-m-d'));
+    //$types = ['common','moments'];
+    $types = ['common'];
+    foreach($types as $type) {
+        $disk->downloadPlaylist($type);
+        $this_day_vids_data = findVids($date, $type);
+
+        foreach ($this_day_vids_data as $type => $this_day_vids) {
+            if (!empty($this_day_vids)) {
+                $prefix = ($type == 'moments') ? '(прекрасные моменты)' : '';
+
+                formatMessage($this_day_vids, "Cегодня в этот день $prefix:", $message);
+                sendMessageTelegram($message);
+            } else {
+                echo "NO vids today :(";
+            }
+        }
+    }
+
 }
