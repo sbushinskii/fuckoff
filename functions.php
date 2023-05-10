@@ -302,13 +302,17 @@ function findVids($scan_day, $type){
     $files = json_decode(file_get_contents(__DIR__ . '/json/playlist_'.$type.'.json'));
     $this_day_vids = [];
 
+    $db = new Database();
     foreach($files as $resource) {
         if (strtotime($resource->unique_date) >= strtotime($scan_day) && strtotime($resource->unique_date)<=strtotime($scan_day)) {
+            //fix name
+            //TODO add resource_id
+
+            $video = $db->getVideoByPath($resource->path);
+            $resource->name = $video['name'];
             $this_day_vids[$resource->type][] = $resource;
         }
     }
-
-
     return $this_day_vids;
 }
 

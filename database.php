@@ -144,6 +144,12 @@ class Database {
         return$record;
     }
 
+    public function getVideoByPath($path){
+        $result = mysqli_query($this->con,"SELECT * FROM `videos` WHERE path='$path'");
+        $record = mysqli_fetch_array($result);
+        return$record;
+    }
+
     public function getTagName($tag_name){
         $result_count = mysqli_query($this->con,"SELECT * FROM `tags` WHERE title='$tag_name'");
         var_dump($result_count);die;

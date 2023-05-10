@@ -103,11 +103,11 @@ if (isset($_GET['page_no']) && $_GET['page_no']!="") {
 
     while($row = mysqli_fetch_array($result)){
         $assignedTags = $db->getVideoTagsIds($row['resource_id']);
-        $autoAssignedTags = false;
-        if(empty($assignedTags)) {
-            $assignedTags = $defaultTagIds;
-            $autoAssignedTags = true;
-        }
+//        $autoAssignedTags = false;
+//        if(empty($assignedTags)) {
+//            $assignedTags = $defaultTagIds;
+//            $autoAssignedTags = true;
+//        }
         ?>
         <form class='needs-validation' method='POST'>
             <tr>
