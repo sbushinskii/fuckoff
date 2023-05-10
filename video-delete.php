@@ -19,7 +19,7 @@ if(!empty($_GET['resource_id'])) {
         $disk = new Disk();
         $status = $disk->removeFile($row['path']);
 
-        $db->delete('videos', $_GET['resource_id']);
+        $db->delete('videos', 'resource_id', $_GET['resource_id']);
         echo "OK";
     } else {
         echo "Ресурс не найден";

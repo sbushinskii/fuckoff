@@ -40,10 +40,10 @@ if(!empty($_POST)) {
         $filename_no_extension = pathinfo($new_path, PATHINFO_FILENAME);
         $filename = trim(str_replace($date_meta, '', $filename_no_extension));
 
-        $db->update('videos', $video_id, 'path', $new_path);
+        $db->update('videos', 'resource_id', $video_id, 'path', $new_path);
     }
-    $db->update('videos', $video_id, 'name', $_POST['name']);
-    $db->update('videos', $video_id, 'type', $_POST['type']);
+    $db->update('videos','resource_id', $video_id, 'name', $_POST['name']);
+    $db->update('videos','resource_id', $video_id, 'type', $_POST['type']);
 }
 
 

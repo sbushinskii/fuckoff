@@ -14,16 +14,16 @@ $db = new Database();
 </head>
 <body>
 <div >
-
+    <?php require_once 'nav.php';?>
 <h1>Все видео</h1>
-<?php require_once 'nav.php';?>
+
 
 <table class="table table-striped table-bordered">
 <thead>
 <tr>
     <th style='width:150px;'>Дата</th>
     <th style='width:50px;'>Название</th>
-    <th style='width:450px;'>Тэги</th>
+    <th style='width:450px;'>Метки</th>
 </tr>
 </thead>
 <tbody>

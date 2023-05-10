@@ -169,8 +169,8 @@ class Database {
         return false;
     }
 
-    public function update($table_name, $resource_id, $key, $value) {
-        $query = "UPDATE `$table_name` SET $key='$value' WHERE resource_id='$resource_id'";
+    public function update($table_name, $where_key, $where_value, $key, $value) {
+        $query = "UPDATE `$table_name` SET $key='$value' WHERE $where_key='$where_value'";
         if(mysqli_query($this->con, $query))
         {
             return true;
@@ -181,8 +181,8 @@ class Database {
         }
     }
 
-    public function delete($table_name, $resource_id) {
-        $query = "DELETE FROM `$table_name` WHERE resource_id='$resource_id'";
+    public function delete($table_name, $key, $value) {
+        $query = "DELETE FROM `$table_name` WHERE $key='$value'";
         if(mysqli_query($this->con, $query))
         {
             return true;
