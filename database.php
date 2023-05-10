@@ -4,7 +4,7 @@ class Database {
     public $con;
     public function __construct()
     {
-        if($_SERVER['REMOTE_ADDR'] == '89.107.139.125') {
+        if($_SERVER['HTTP_HOST'] != 'localhost') {
             $this->con = mysqli_connect("localhost", "u2036503_default", "yvgWrM6IT2ZVr66f", "u2036503_default");
         } else {
             $this->con = mysqli_connect("localhost", "root", "123", "today");
