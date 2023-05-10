@@ -16,6 +16,20 @@ class Database {
         mysqli_set_charset($this->con,"utf8");
     }
 
+    public function getVideosNoPreview(){
+        $sql="SELECT * FROM videos WHERE preview IS NULL;";
+        $videos = [];
+        $result = mysqli_query($this->con, $sql);
+        while($row = mysqli_fetch_array($result)) {
+            $videos[] = [
+                'path'=>$row['path'],
+                'resource_id'=>$row['resource_id'],
+                'name'=>$row['name']
+            ];
+        }
+        return $videos;
+    }
+
     public function recalculateTagsUsage(){
         $sql = 'UPDATE tags t SET counter = (select count(*) as cnt from video_tag vt where vt.tag_id = t.id) where 1;';
         mysqli_query($this->con, $sql);

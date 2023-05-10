@@ -35,6 +35,9 @@ foreach ($templates as $key=> $template) {
 
         echo "Processing " . $year . PHP_EOL;
         foreach ($files as $resource) {
+            $th_name = $resource->md5 . '.mp4';
+            file_put_contents("preview/".$th_name, fopen($resource->preview, 'r'));
+die('ok');
             $date_meta = explode(' ', $resource->name)[0];
             $date = strtotime($date_meta);
             $filename_no_extension = pathinfo($resource->name, PATHINFO_FILENAME);

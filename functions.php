@@ -75,6 +75,48 @@ die('wwtf');
         return $resp;
     }
 
+    function grabFile($path, $save_path){
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => $path,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'GET',
+            CURLOPT_HTTPHEADER => array(
+                ': ',
+                'Authorization: OAuth ' . $this->token
+            ),
+        ));
+        $response = curl_exec($curl);
+        file_put_contents($save_path, $response);
+    }
+
+    function grabPreviewFile($path, $save_path){
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://cloud-api.yandex.net/v1/disk/resources?path=' . $path . '&preview_size=300x300',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'GET',
+            CURLOPT_HTTPHEADER => array(
+                ': ',
+                'Authorization: OAuth ' . $this->token
+            ),
+        ));
+        $response = curl_exec($curl);
+        $response_obj = json_decode($response);
+        $file = $response_obj->preview;
+        $this->grabFile($file, $save_path);
+    }
+
     function getFiles($path, $limit = 30, $offset = 0)
     {
         $curl = curl_init();
@@ -115,8 +157,6 @@ die('wwtf');
 
         return round(pow(1024, $base - floor($base)), $precision) .' '. $suffixes[floor($base)];
     }
-
-
 
     function setPubicUrl($video) {
         $curl = curl_init();
