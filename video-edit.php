@@ -43,6 +43,7 @@ if(!empty($_POST)) {
         $db->update('videos', $video_id, 'path', $new_path);
     }
     $db->update('videos', $video_id, 'name', $_POST['name']);
+    $db->update('videos', $video_id, 'type', $_POST['type']);
 }
 
 
@@ -61,7 +62,7 @@ $row = mysqli_fetch_array($result);
 <body>
 <div >
 
-    <h3>Редактирование Видео</h3>
+    <h1>Редактирование Видео</h1>
     <?php require_once 'nav.php';?>
 
     <?php
@@ -78,10 +79,10 @@ $row = mysqli_fetch_array($result);
     <table class="table table-striped table-bordered">
         <thead>
         <tr>
-            <th style='width:50px;'>ID</th>
             <th style='width:150px;'>Дата</th>
             <th style='width:50px;'>Название</th>
             <th style='width:50px;'>Путь в облаке</th>
+            <th style='width:50px;'>Тип</th>
             <th style='width:450px;'>Тэги</th>
         </tr>
         </thead>
@@ -89,15 +90,20 @@ $row = mysqli_fetch_array($result);
 
             <form class='needs-validation' method='POST'>
                 <tr>
-                    <td><?php echo $row['id'];?></td>
-                    <td><?php echo $row['date'];?></td>
+                    <td><?php echo $row['date'];?><br>
+                        <a target='_blank' href='<?php echo $row['public_url'];?>'>Открыть</a><br><br></td>
                     <td>
                         <input type="text" name="name" value="<?php echo $row['name'];?>">
                     </td>
                     <td>
-                        <a target='_blank' href='<?php echo $row['public_url'];?>'>Открыть</a><br><br>
                         <textarea name="path"><?php echo $row['path'];?></textarea>
                         <input type="hidden" name="old_path" value="<?php echo $row['path'];?>">
+                    </td>
+                    <td>
+                        <select name="type" class="ignore-tags">
+                            <option value="common" <?php echo ($row['type']=='common') ? " selected ":""; ?>>Общее</option>
+                            <option value="moments" <?php echo ($row['type']=='moments') ? " selected ":""; ?>>Моменты</option>
+                        </select>
                     </td>
                     <td>
                         <input type="hidden" name="resource_id" value="<?php echo $row['resource_id'];?>">

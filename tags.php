@@ -10,9 +10,10 @@ $tags = $db->getTags();
 <head>
     <meta charset="UTF-8">
     <title>Мои метки</title>
+    <?php require_once 'header.php';?>
 </head>
 <body>
-    <h1>Мои видео метки</h1>
+    <h1>Мои метки</h1>
     <?php require_once 'nav.php';?>
     <?php
         foreach ($tags as $tag) { ?>

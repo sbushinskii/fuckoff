@@ -58,7 +58,7 @@ if(!empty($_POST)) {
 <body>
 <div >
 
-<h3>Видео Сегодня</h3>
+<h1>Видео Сегодня</h1>
 <?php require_once 'nav.php';?>
 
 
@@ -67,7 +67,6 @@ if(!empty($_POST)) {
 <tr>
     <th style='width:150px;'>Дата</th>
     <th style='width:50px;'>Название</th>
-    <th style='width:50px;'>Путь в облаке</th>
     <th style='width:450px;'>Тэги</th>
 </tr>
 </thead>
@@ -89,15 +88,12 @@ if(!empty($_POST)) {
         ?>
         <form class='needs-validation' method='POST'>
             <tr>
-                    <td><?php echo $row['date'];?></td>
                     <td>
-                        <a target='_blank' href='<?php echo $row['public_url'];?>'><?php echo $row['name'];?></a>
-                        <br>
+                        <?php echo $row['date'];?><br>
                         <a target='_blank' href="video-edit.php?resource_id=<?php echo $row['resource_id'];?>">(редактировать)</a>
                     </td>
                     <td>
-                        <textarea name="path"><?php echo $row['path'];?></textarea>
-                        <input type="hidden" name="old_path" value="<?php echo $row['path'];?>">
+                        <a target='_blank' href='<?php echo $row['public_url'];?>'><?php echo $row['name'];?></a>
                     </td>
                  <td>
                       <input type="hidden" name="resource_id" value="<?php echo $row['resource_id'];?>">
