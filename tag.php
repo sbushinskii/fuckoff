@@ -21,6 +21,7 @@ if(!(int)$tag_id) {
 </head>
 <body>
 <h1>Тэг "<?php echo $tag['title'];?>"</h1>
+<a href="tag-edit.php?id=<?php echo $tag['id'];?>">Редактировать</a><br>
 <?php require_once 'nav.php';?>
 
 <table class="table table-striped table-bordered">
