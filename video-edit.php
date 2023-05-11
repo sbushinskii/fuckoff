@@ -90,9 +90,12 @@ $row = mysqli_fetch_array($result);
 
             <form class='needs-validation' method='POST'>
                 <tr>
-                    <td><?php echo $row['date'];?><br>
+                    <td>
+                        <a target='_blank' href='<?php echo $row['public_url'];?>'>
+                        <?php echo $row['date'];?><br>
                         <img src="images/<?php echo $row['preview'];?>"><br>
-                        <a target='_blank' href='<?php echo $row['public_url'];?>'>Открыть</a><br><br></td>
+                        Открыть<br><br></td>
+                        </a>
                     <td>
                         <input type="text" name="name" value="<?php echo $row['name'];?>">
                     </td>

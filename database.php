@@ -4,12 +4,12 @@ class Database {
     public $con;
     public function __construct()
     {
-//        if($_SERVER['HTTP_HOST'] != 'localhost') {
-//            $this->con = mysqli_connect("localhost", "u2036503_default", "yvgWrM6IT2ZVr66f", "u2036503_default");
-//        } else {
-//            $this->con = mysqli_connect("localhost", "root", "123", "today");
-//        }
-        $this->con = mysqli_connect("localhost", "root", "123", "today");
+        if(file_exists('dev')){
+            $this->con = mysqli_connect("localhost", "root", "123", "today");
+        } else {
+            $this->con = mysqli_connect("localhost", "u2036503_default", "yvgWrM6IT2ZVr66f", "u2036503_default");
+        }
+
         if(!$this->con)
         {
             echo 'Database Connection Error ' . mysqli_connect_error($this->con);die;
@@ -22,15 +22,7 @@ class Database {
         $result = mysqli_query($this->con, $sql);
         while($row = mysqli_fetch_array($result)) {
 
-            $vids[] = [
-                'path'=>$row['path'],
-                'public_url'=>$row['public_url'],
-                'name'=>$row['name'],
-                'id'=>$row['id'],
-                'date'=>$row['date'],
-                'resource_id'=>$row['resource_id'],
-                'preview'=>$row['preview'],
-            ];
+            $vids[] = $row;
         }
         return $vids;
     }
