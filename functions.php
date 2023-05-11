@@ -98,7 +98,7 @@ die('wwtf');
     function grabPreviewFile($path, $save_path){
         $curl = curl_init();
         curl_setopt_array($curl, array(
-            CURLOPT_URL => 'https://cloud-api.yandex.net/v1/disk/resources?path=' . $path . '&preview_size=300x300',
+            CURLOPT_URL => 'https://cloud-api.yandex.net/v1/disk/resources?path=' . $path . '&size=L&crop=1',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -114,6 +114,8 @@ die('wwtf');
         $response = curl_exec($curl);
         $response_obj = json_decode($response);
         $file = $response_obj->preview;
+
+        $file = str_replace('crop=0', 'crop=1', $file);
         $this->grabFile($file, $save_path);
     }
 
@@ -469,7 +471,8 @@ function sendTodayVideos($all = false){
     foreach($types as $type) {
         $disk->downloadPlaylist($type);
         $this_day_vids_data = findVids($date, $type);
-
+//todo combine methods
+        die('TODO');
         foreach ($this_day_vids_data as $type => $this_day_vids) {
             if (!empty($this_day_vids)) {
                 $prefix = ($type == 'moments') ? '(прекрасные моменты)' : '';

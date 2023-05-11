@@ -33,6 +33,17 @@
     }
     ?>
 
+    <?php if($_SERVER['SCRIPT_NAME']=='/search.php') { ?>
+        <h2>Поиск</h2>
+        <?php
+    } else { ?>
+        <a href="search.php">
+            <h2>Поиск</h2>
+        </a>
+        <?php
+    }
+    ?>
+
 </div>
 
 <style>

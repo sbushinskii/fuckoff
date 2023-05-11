@@ -60,6 +60,7 @@ if (isset($_GET['page_no']) && $_GET['page_no']!="") {
         <form class='needs-validation' method='POST'>
             <tr>
                     <td><?php echo $row['date'];?><br>
+                        <img src="images/<?php echo $row['preview'];?>"><br>
                         <a target='_blank' href="video-edit.php?resource_id=<?php echo $row['resource_id'];?>">(редактировать)</a>
                     </td>
                     <td>

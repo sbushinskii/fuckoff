@@ -50,6 +50,7 @@ if(isset($_GET['send'])){
             <tr>
                     <td>
                         <?php echo $row['date'];?><br>
+                        <img src="images/<?php echo $row['preview'];?>">
                         <a target='_blank' href="video-edit.php?resource_id=<?php echo $row['resource_id'];?>">(редактировать)</a>
                     </td>
                     <td>

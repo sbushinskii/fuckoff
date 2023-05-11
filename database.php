@@ -4,16 +4,35 @@ class Database {
     public $con;
     public function __construct()
     {
-        if($_SERVER['HTTP_HOST'] != 'localhost') {
-            $this->con = mysqli_connect("localhost", "u2036503_default", "yvgWrM6IT2ZVr66f", "u2036503_default");
-        } else {
-            $this->con = mysqli_connect("localhost", "root", "123", "today");
-        }
+//        if($_SERVER['HTTP_HOST'] != 'localhost') {
+//            $this->con = mysqli_connect("localhost", "u2036503_default", "yvgWrM6IT2ZVr66f", "u2036503_default");
+//        } else {
+//            $this->con = mysqli_connect("localhost", "root", "123", "today");
+//        }
+        $this->con = mysqli_connect("localhost", "root", "123", "today");
         if(!$this->con)
         {
             echo 'Database Connection Error ' . mysqli_connect_error($this->con);die;
         }
         mysqli_set_charset($this->con,"utf8");
+    }
+
+    public function searchVideosByTitle($title){
+        $sql = "select * from videos where `name` like '%$title%'";
+        $result = mysqli_query($this->con, $sql);
+        while($row = mysqli_fetch_array($result)) {
+
+            $vids[] = [
+                'path'=>$row['path'],
+                'public_url'=>$row['public_url'],
+                'name'=>$row['name'],
+                'id'=>$row['id'],
+                'date'=>$row['date'],
+                'resource_id'=>$row['resource_id'],
+                'preview'=>$row['preview'],
+            ];
+        }
+        return $vids;
     }
 
     public function getVideosNoPreview(){
@@ -76,6 +95,7 @@ class Database {
                 'id'=>$row['id'],
                 'date'=>$row['date'],
                 'resource_id'=>$row['resource_id'],
+                'preview'=>$row['preview'],
             ];
         }
         return $vids;
