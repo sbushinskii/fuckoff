@@ -11,13 +11,12 @@ $vids = false;
 if(isset($_POST['search'])){
     $search = $_POST['search'];
 
-    $tags = $db->getTags();
     $vids = [];
     foreach ($db->searchVideosByTitle($search) as $row) {
         $assignedTags = $db->getVideoTagsIds($row['resource_id']);
         $vids[] = [
             'video'=>$row,
-            'tags' => $assignedTags
+            'assignedTags' => $assignedTags
         ];
     }
 }

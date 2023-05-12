@@ -4,7 +4,7 @@ class Database {
     public $con;
     public function __construct()
     {
-        if(file_exists('dev')){
+        if(file_exists(__DIR__ . '/dev')){
             $this->con = mysqli_connect("localhost", "root", "123", "today");
         } else {
             $this->con = mysqli_connect("localhost", "u2036503_default", "yvgWrM6IT2ZVr66f", "u2036503_default");
@@ -28,7 +28,7 @@ class Database {
     }
 
     public function getVideosNoPreview(){
-        $sql="SELECT * FROM videos WHERE preview IS NULL;";
+        $sql="SELECT * FROM videos WHERE preview IS NULL AND skip_preview=0";
         $videos = [];
         $result = mysqli_query($this->con, $sql);
         while($row = mysqli_fetch_array($result)) {
@@ -37,6 +37,16 @@ class Database {
                 'resource_id'=>$row['resource_id'],
                 'name'=>$row['name']
             ];
+        }
+        return $videos;
+    }
+
+    public function getVideos(){
+        $sql="SELECT * FROM videos WHERE is_deleted = 0";
+        $videos = [];
+        $result = mysqli_query($this->con, $sql);
+        while($row = mysqli_fetch_array($result)) {
+            $videos[] = $row;
         }
         return $videos;
     }

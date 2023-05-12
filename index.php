@@ -38,7 +38,8 @@ if (isset($_GET['page_no']) && $_GET['page_no']!="") {
 	$adjacents = "2";
 
     $filter = '';
-	if(isset($_GET['type'])){
+    $type='';
+	if(isset($_GET['type'])&&trim($_GET['type'])){
 	    $type = $_GET['type'];
 	    $filter = " WHERE type='$type'";
     }
@@ -51,14 +52,13 @@ if (isset($_GET['page_no']) && $_GET['page_no']!="") {
     $total_no_of_pages = ceil($total_records / $total_records_per_page);
 	$second_last = $total_no_of_pages - 1; // total page minus 1
 
-    $result = mysqli_query($db->con,"SELECT * FROM `videos` $filter LIMIT $offset, $total_records_per_page");
-    $tags = $db->getTags();
+    $result = mysqli_query($db->con,"SELECT * FROM `videos` $filter order by `timestamp` DESC LIMIT $offset, $total_records_per_page");
 
     while($row = mysqli_fetch_array($result)) {
         $assignedTags = $db->getVideoTagsIds($row['resource_id']);
         $vids[] = [
             'video'=>$row,
-            'tags' => $assignedTags
+            'assignedTags' => $assignedTags,
         ];
     }
 ?>

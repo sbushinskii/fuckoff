@@ -19,13 +19,13 @@ $total_records = mysqli_fetch_array($result_count);
 $total_records = $total_records['total_records'];
 
 $result = mysqli_query($db->con,"SELECT * FROM `videos` $filter");
-$tags = $db->getTags();
+
 $vids = [];
 while($row = mysqli_fetch_array($result)) {
     $assignedTags = $db->getVideoTagsIds($row['resource_id']);
     $vids[] = [
             'video'=>$row,
-            'tags' => $assignedTags
+            'assignedTags' => $assignedTags,
     ];
 }
 ?>
