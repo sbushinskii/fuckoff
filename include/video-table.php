@@ -9,11 +9,12 @@ $tags = $db->getTags();
 <table class="table table-striped table-bordered">
     <thead>
     <tr>
-        <th style='width:150px;'>Дата</th>
-        <th style='width:50px;'>Название</th>
-        <th style='width:50px;'>Категория</th>
-        <th style='width:450px;'>Метки</th>
-        <th style='width:450px;'>Тэги</th>
+        <th>Дата</th>
+        <th>Изображение</th>
+        <th>Смотреть на диске</th>
+        <th>Категория</th>
+        <th>Метки</th>
+        <th>Тэги</th>
     </tr>
     </thead>
     <tbody>
@@ -24,16 +25,22 @@ $tags = $db->getTags();
         ?>
         <tr>
             <td>
+                <?php echo $row['date'];?><br>
                 <a target='_blank' href="video-edit.php?resource_id=<?php echo $row['resource_id'];?>">
-                    <?php echo $row['date'];?><br>
-                    <?php if(!$row['skip_preview']){ ?>
-                        <img src="images/<?php echo $row['preview'];?>"><br>
-                    <?php } ?>
-                   (редактировать)
+                    редактировать<br><br>
                 </a>
             </td>
             <td>
+                <?php if(!$row['skip_preview']){ ?>
+                    <img height="150px" src="images/<?php echo $row['preview'];?>"><br>
+                <?php } ?>
+                <input type="file" name="preview">
+            </td>
+            <td>
                 <a target='_blank' href='<?php echo $row['public_url'];?>'><?php echo $row['name'];?></a>
+                <br>
+                Мише - <?php echo $row['Misha'];?><br>
+                Вере - <?php echo $row['Vera'];?><br>
             </td>
             <td>
                 <?php echo ($row['type']=='common')?"Видео":"Приятные моменты";?>
