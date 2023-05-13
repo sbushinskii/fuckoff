@@ -12,7 +12,7 @@ if(!empty($_POST)) {
     $db->clearTags($video_id);
 
     //upload
-    if(isset($_FILES["preview"])) {
+    if(isset($_FILES["preview"]) && !empty($_FILES["preview"]["tmp_name"])) {
         $target_dir = __DIR__ . "/images/";
         $target_file = $target_dir . $video_id . ".png";
 
