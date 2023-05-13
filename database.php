@@ -17,11 +17,21 @@ class Database {
         mysqli_set_charset($this->con,"utf8");
     }
 
-    public function searchVideosByTitle($title){
-        $sql = "select * from videos where `name` like '%$title%'";
+    public function getTodayVideos($scan_day){
+        $sql="SELECT * FROM videos WHERE unique_date = '$scan_day'";
+        $videos = [];
         $result = mysqli_query($this->con, $sql);
         while($row = mysqli_fetch_array($result)) {
+            $videos[] = $row;
+        }
+        return $videos;
+    }
 
+    public function searchVideosByTitle($title, $offset, $total_records_per_page){
+        $sql = "select * from videos where `name` like '%$title%'  LIMIT $offset, $total_records_per_page";
+        $result = mysqli_query($this->con, $sql);
+        $vids  = [];
+        while($row = mysqli_fetch_array($result)) {
             $vids[] = $row;
         }
         return $vids;

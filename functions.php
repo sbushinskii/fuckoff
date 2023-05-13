@@ -340,20 +340,14 @@ function countVids(){
     return count($vids);
 }
 
-function findVids($scan_day, $type){
-    $files = json_decode(file_get_contents(__DIR__ . '/json/playlist_'.$type.'.json'));
+function findVids($scan_day){
     $this_day_vids = [];
 
     $db = new Database();
-    foreach($files as $resource) {
-        if (strtotime($resource->unique_date) >= strtotime($scan_day) && strtotime($resource->unique_date)<=strtotime($scan_day)) {
-            //fix name
-            //TODO add resource_id
+    $files = $db->getTodayVideos($scan_day);
 
-            $video = $db->getVideoByPath($resource->path);
-            $resource->name = $video['name'];
-            $this_day_vids[$resource->type][] = $resource;
-        }
+    foreach($files as $video) {
+        $this_day_vids[$video['type']][] = $video;
     }
     return $this_day_vids;
 }
@@ -369,15 +363,14 @@ function formatMessage($vids, $title, &$message, $debug = false){
     }
 
     foreach ($vids as $vid) {
-        if(!$vid->Vera){
-            $age = sprintf("(Мише: %s)", $vid->Misha);
+        if(!$vid['Vera']){
+            $age = sprintf("(Мише: %s)", $vid['Misha']);
         } else {
-            $age = sprintf("(Мише: %s, Вере: %s)", $vid->Misha, $vid->Vera);
+            $age = sprintf("(Мише: %s, Вере: %s)", $vid['Misha'], $vid['Vera']);
         }
-        $extra = $debug ? ' '.$vid->path : '';
-        $message .= $vid->date_formatted . ' ' .  $vid->name
+        $message .= $vid['date_formatted'] . ' ' .  $vid['name']
 	. " ".$age
-    . ' Ссылка: '.$vid->public_url . $extra
+    . ' Ссылка: '.$vid['public_url']
 	 . PHP_EOL . PHP_EOL;
     }
 }
@@ -408,11 +401,7 @@ function dateDiff($date1, $date2, $debug = false){
 
     $years = floor($diff / (365*60*60*24));
     $months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
-    if($debug) {
-        var_dump($years);;
-        var_dump($diff);die;
-    }
-    //$days = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
+
     if($years) {
         switch ($years){
             case ($years==1) : {
@@ -460,30 +449,19 @@ function formatMonthString($years_template, $years, $months){
 }
 
 function sendTodayVideos($all = false){
-    $disk = new Disk();
-    $message = '';
     $date = getUniqueDate(date('Y-m-d'));
-    if($all) {
-        $types = ['common', 'moments'];
-    } else {
-        $types = ['common'];
-    }
-    foreach($types as $type) {
-        $disk->downloadPlaylist($type);
-        $this_day_vids_data = findVids($date, $type);
-//todo combine methods
-        die('TODO');
-        foreach ($this_day_vids_data as $type => $this_day_vids) {
-            if (!empty($this_day_vids)) {
-                $prefix = ($type == 'moments') ? '(прекрасные моменты)' : '';
+    $this_day_vids_data = findVids($date);
+    $message = '';
+    foreach ($this_day_vids_data as $type => $this_day_vids) {
+        if (!empty($this_day_vids)) {
+            $prefix = ($type == 'moments') ? '(прекрасные моменты)' : '';
 
-                formatMessage($this_day_vids, "Cегодня в этот день $prefix:", $message);
-                sendMessageTelegram($message);
-            } else {
-                echo "NO vids today :(";
-            }
+            formatMessage($this_day_vids, "Cегодня в этот день $prefix:", $message);
+        } else {
+            echo "NO vids today :(";
         }
     }
+    sendMessageTelegram($message);
 }
 
 function checkPostStatus(){
