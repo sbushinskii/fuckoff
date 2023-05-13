@@ -6,6 +6,7 @@ error_reporting(E_ALL);
 require_once 'database.php';
 require_once 'functions.php';
 $db = new Database();
+checkPostStatus();
 
 if(isset($_GET['send'])){
     sendTodayVideos($all = true);
