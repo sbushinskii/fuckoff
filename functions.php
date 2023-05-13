@@ -484,5 +484,29 @@ function sendTodayVideos($all = false){
             }
         }
     }
+}
 
+function checkPostStatus(){
+    if(!empty($_POST) && isset($_POST['tags_new'])) {
+        $db = new Database();
+        foreach ($_POST['tags_new'] as $video_id => $tags) {
+            $db->clearTags($video_id);
+            $tag_ids = [];
+            foreach ($tags as $tag_name) {
+                if (!(int)$tag_name + 0) {
+                    $record = [
+                        'title' => $tag_name
+                    ];
+                    $tag_id = $db->insert('tags', $record);
+                } else {
+                    $tag_id = $tag_name;
+                }
+                $tags = [
+                    'tag_id' => $tag_id,
+                    'video_id' => $video_id,
+                ];
+                $status = $db->insert('video_tag', $tags);
+            }
+        }
+    }
 }

@@ -6,20 +6,27 @@ error_reporting(E_ALL);
 require_once 'database.php';
 require_once 'functions.php';
 $db = new Database();
+checkPostStatus();
 
+session_start();
 $vids = false;
-if(isset($_POST['search'])){
-    $search = $_POST['search'];
+if(isset($_POST['search'])) {
+    $_SESSION['search'] = $_POST['search'];
+}
 
-    $vids = [];
+$search = (isset($_SESSION['search']) && trim($_SESSION['search'])) ? $_SESSION['search'] : false;
+
+$vids = [];
+if($search) {
     foreach ($db->searchVideosByTitle($search) as $row) {
         $assignedTags = $db->getVideoTagsIds($row['resource_id']);
         $vids[] = [
-            'video'=>$row,
+            'video' => $row,
             'assignedTags' => $assignedTags
         ];
     }
 }
+
 
 ?>
 <html>
@@ -34,7 +41,7 @@ if(isset($_POST['search'])){
 <div class="table">
     <div class="md-form mt-0">
         <form method="POST">
-            <input class="form-control" type="text" name="search" placeholder="Search" aria-label="Search" value="<?php echo isset($_POST['search'])?$_POST['search']:"";?>">
+            <input class="form-control" type="text" name="search" placeholder="Search" aria-label="Search" value="<?php echo $search;?>">
         </form>
     </div>
 </div>
