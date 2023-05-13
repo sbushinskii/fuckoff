@@ -11,6 +11,20 @@ if(!empty($_POST)) {
     $video_id = $_POST['resource_id'];
     $db->clearTags($video_id);
 
+    //upload
+    if(isset($_FILES["preview"])) {
+        $target_dir = __DIR__ . "/images/";
+        $target_file = $target_dir . $video_id . ".png";
+
+        $check = getimagesize($_FILES["preview"]["tmp_name"]);
+        if($check){
+            if (move_uploaded_file($_FILES["preview"]["tmp_name"], $target_file)) {
+                $db->update('videos', 'resource_id', $video_id, 'skip_preview', '0');
+                $db->update('videos', 'resource_id', $video_id, 'preview', $video_id . ".png");
+            }
+        }
+    }
+
     //save tags
     $tag_ids = [];
     if(isset($_POST['tags_new'])) {
@@ -80,6 +94,7 @@ $row = mysqli_fetch_array($result);
         <thead>
         <tr>
             <th style='width:150px;'>Дата</th>
+            <th style='width:150px;'>Изображение</th>
             <th style='width:50px;'>Название</th>
             <th style='width:50px;'>Путь в облаке</th>
             <th style='width:50px;'>Тип</th>
@@ -88,14 +103,20 @@ $row = mysqli_fetch_array($result);
         </thead>
         <tbody>
 
-            <form class='needs-validation' method='POST'>
+            <form class='needs-validation' method='POST' enctype="multipart/form-data">
                 <tr>
                     <td>
+                        <?php echo $row['date'];?><br><br>
                         <a target='_blank' href='<?php echo $row['public_url'];?>'>
-                        <?php echo $row['date'];?><br>
-                        <img src="images/<?php echo $row['preview'];?>"><br>
-                        Открыть<br><br></td>
+                            Ссылка<br><br>
                         </a>
+                    </td>
+                    <td>
+                        <?php if(!$row['skip_preview']){ ?>
+                            <img src="images/<?php echo $row['preview'];?>"><br>
+                        <?php } ?>
+                        <input type="file" name="preview">
+                    </td>
                     <td>
                         <input type="text" name="name" value="<?php echo $row['name'];?>">
                     </td>
