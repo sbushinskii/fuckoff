@@ -113,7 +113,7 @@ $row = mysqli_fetch_array($result);
                     </td>
                     <td>
                         <?php if(!$row['skip_preview']){ ?>
-                            <img src="images/<?php echo $row['preview'];?>"><br>
+                            <img height="150px" src="images/<?php echo $row['preview'];?>"><br>
                         <?php } ?>
                         <input type="file" name="preview">
                     </td>
