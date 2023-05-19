@@ -8,7 +8,7 @@ $db = new Database();
 $videosNoPreview = $db->getVideosNoPreview();
 
 $total = count($videosNoPreview);
-$current = 0;
+$current = 1;
 foreach ($videosNoPreview as $item) {
     $preview_original_name = $item['resource_id'] . '.mp4';
     $preview_filename = str_replace('.mp4', '.png', $preview_original_name);

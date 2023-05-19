@@ -107,8 +107,8 @@ $path = "disk:/playlist/errors.json";
 $upload_URL = $disk->getPlaylistUploadURL($path);
 $disk->uploadPlaylist($upload_URL, json_encode($errors, JSON_UNESCAPED_UNICODE));
 
-//Upload playlist
 
+//TODO run photos
 
 echo "Erros: " . count($errors).PHP_EOL;
 echo "Files: " . $total_files.PHP_EOL;
