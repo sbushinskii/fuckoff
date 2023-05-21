@@ -52,7 +52,14 @@ $tags = $db->getTags();
                 </a>
             </td>
             <td>
-                <?php if(!$row['skip_preview']){ ?>
+                <?php
+                    $preview = "/images/".$row['preview'];
+                    $skip_preview = true;
+                    if(file_exists($preview)){
+                        $skip_preview = false;
+                    }
+                ?>
+                <?php if(!$skip_preview || !$row['skip_preview']){ ?>
                 <a target='_blank' href='<?php echo $row['public_url'];?>'>
                     <img height="150px" src="images/<?php echo $row['preview'];?>"><br>
                 </a>
