@@ -42,11 +42,11 @@
         <?php
     }
     ?>
-    <?php if($_SERVER['SCRIPT_NAME']=='/service/export.php') { ?>
+    <?php if($_SERVER['SCRIPT_NAME']=='/service/index.php') { ?>
         <h2>Сервис</h2>
         <?php
     } else { ?>
-        <a href="/service/export.php">
+        <a href="/service/index.php">
             <h2>Сервис</h2>
         </a>
         <?php
