@@ -24,16 +24,21 @@ $Misha_bd = '2013-01-15';
 $Vera_bd  = '2016-04-19';
 $db = [];
 $total_files = 0;
+$debug = false;
 foreach ($templates as $key=> $template) {
-    echo "Scanning $key: " . $template . PHP_EOL;
+    if($debug) {
+        echo "Scanning $key: " . $template . PHP_EOL;
+    }
     $my_files = [];
     foreach ($years as $year) {
 
         $param = sprintf($template, $year);
 
         $files = $disk->getFiles(urlencode($param), 1000);
-
-        echo "Processing " . $year . PHP_EOL;
+        if($debug) {
+            echo "Processing " . $year . PHP_EOL;
+            echo "<br>";
+        }
         foreach ($files as $resource) {
             $date_meta = explode(' ', $resource->name)[0];
             $date = strtotime($date_meta);
@@ -52,7 +57,10 @@ foreach ($templates as $key=> $template) {
 
                 if (!isset($resource->public_url)) {
                     $disk->setPubicUrl(urlencode($resource->path));
-                    var_dump("sharing: " . $filename);
+                    if($debug) {
+                        echo("sharing: " . $filename);
+                        echo "<br>";
+                    }
                     $rescan_counter++;
                 } else {
                     $total_files++;
@@ -107,12 +115,16 @@ $path = "disk:/playlist/errors.json";
 $upload_URL = $disk->getPlaylistUploadURL($path);
 $disk->uploadPlaylist($upload_URL, json_encode($errors, JSON_UNESCAPED_UNICODE));
 
-
-//TODO run photos
-
-echo "Erros: " . count($errors).PHP_EOL;
-echo "Files: " . $total_files.PHP_EOL;
-echo "Files to rescan: " . $rescan_counter.PHP_EOL;
+echo "<br>";
+echo "БД обновлена";
+echo "<br>";
+echo "<a href='/service/index.php'>ОК</a>";
+echo "<br>";
+if($debug) {
+    echo "Erros: " . count($errors) . PHP_EOL;
+    echo "Files: " . $total_files . PHP_EOL;
+    echo "Files to rescan: " . $rescan_counter . PHP_EOL;
+}
 
 
 

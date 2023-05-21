@@ -142,7 +142,7 @@ die('wwtf');
         $response_obj = json_decode($response);
         if(isset($response_obj->error)){
             if($response_obj->error == 'DiskNotFoundError'){
-                echo "Skip: ". urldecode($path).PHP_EOL;
+                //echo "Skip: ". urldecode($path).PHP_EOL;
             }
             return [];
         }

@@ -53,7 +53,9 @@ $tags = $db->getTags();
             </td>
             <td>
                 <?php if(!$row['skip_preview']){ ?>
+                <a target='_blank' href='<?php echo $row['public_url'];?>'>
                     <img height="150px" src="images/<?php echo $row['preview'];?>"><br>
+                </a>
                 <?php } ?>
                 <input type="file" name="preview">
             </td>

@@ -6,14 +6,20 @@ $disk = new Disk();
 $db = new Database();
 
 $videosNoPreview = $db->getVideosNoPreview();
+if(empty($videosNoPreview)){
+    echo "Все ок, все видео в порядке";
+    echo "<br>";
+    echo "<a href='/service/index.php'>ОК</a>";
+}
 
 $total = count($videosNoPreview);
 $current = 1;
+$save_path = str_replace('service', '', __DIR__) . 'images/';
+
 foreach ($videosNoPreview as $item) {
     $preview_original_name = $item['resource_id'] . '.mp4';
     $preview_filename = str_replace('.mp4', '.png', $preview_original_name);
 
-    $save_path = '/Users/sbushinskii/workspace/today2/images/';
     $disk->grabPreviewFile($item['path'], $save_path . $preview_original_name);
     echo $current . "/" . $total . " " . $item['name'];
     if(filesize($save_path . $preview_original_name)) {
