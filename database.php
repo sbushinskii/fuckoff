@@ -28,7 +28,8 @@ class Database {
     }
 
     public function searchVideosByTitle($title, $offset, $total_records_per_page){
-        $sql = "select * from videos where `name` like '%$title%'  LIMIT $offset, $total_records_per_page";
+        $order = isset($_GET['order']) ? $_GET['order'] : "DESC";
+        $sql = "select * from videos where `name` like '%$title%' ORDER BY `timestamp` $order  LIMIT $offset, $total_records_per_page";
         $result = mysqli_query($this->con, $sql);
         $vids  = [];
         while($row = mysqli_fetch_array($result)) {

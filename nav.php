@@ -1,10 +1,9 @@
-
 <div class="header-nav">
     <?php if($_SERVER['SCRIPT_NAME']=='/today.php') { ?>
         <h2>Сегодня</h2>
         <?php
     } else { ?>
-        <a href="today.php">
+        <a href="/today.php">
             <h2>Сегодня</h2>
         </a>
         <?php
@@ -15,7 +14,7 @@
         <h2>Все</h2>
     <?php
     } else { ?>
-        <a href="index.php">
+        <a href="/index.php">
             <h2>Все</h2>
         </a>
     <?php
@@ -26,7 +25,7 @@
         <h2>Тэги</h2>
         <?php
     } else { ?>
-        <a href="tags.php">
+        <a href="/tags.php">
             <h2>Тэги</h2>
         </a>
         <?php
@@ -37,8 +36,18 @@
         <h2>Поиск</h2>
         <?php
     } else { ?>
-        <a href="search.php">
+        <a href="/search.php">
             <h2>Поиск</h2>
+        </a>
+        <?php
+    }
+    ?>
+    <?php if($_SERVER['SCRIPT_NAME']=='/service/export.php') { ?>
+        <h2>Сервис</h2>
+        <?php
+    } else { ?>
+        <a href="/service/export.php">
+            <h2>Сервис</h2>
         </a>
         <?php
     }

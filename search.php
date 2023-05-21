@@ -10,8 +10,8 @@ checkPostStatus();
 
 session_start();
 $vids = false;
-if(isset($_POST['search'])) {
-    $_SESSION['search'] = $_POST['search'];
+if(isset($_GET['search'])) {
+    $_SESSION['search'] = $_GET['search'];
 }
 
 $search = (isset($_SESSION['search']) && trim($_SESSION['search'])) ? $_SESSION['search'] : false;
@@ -29,7 +29,6 @@ if($search) {
     $previous_page = $page_no - 1;
     $next_page = $page_no + 1;
     $adjacents = "2";
-
     $result_count = mysqli_query($db->con, "SELECT COUNT(*) as total_records FROM videos where `name` like '%$search%'");
     $total_records = mysqli_fetch_array($result_count);
     $total_records = $total_records['total_records'];
@@ -59,15 +58,17 @@ if($search) {
 
 <div class="table">
     <div class="md-form mt-0">
-        <form method="POST">
+        <form method="GET">
             <input class="form-control" type="text" name="search" placeholder="Search" aria-label="Search" value="<?php echo $search;?>">
         </form>
     </div>
 </div>
+    <?php if(!empty($vids)){ ?>
     <h4>
         Найдено <?php echo $total_records;?> записей
     </h4>
     <?php require_once 'include/video-table.php';?>
     <?php require_once 'include/pagination.php';?>
+    <?php } ?>
 </body>
 </html>

@@ -11,6 +11,7 @@ checkPostStatus();
 if(isset($_GET['send'])){
     sendTodayVideos($all = true);
 }
+$order = isset($_GET['order']) ? $_GET['order'] : "DESC";
 
 $filter = ' WHERE unique_date = "'.getUniqueDate(date('Y-m-d')).'"';
 
@@ -19,7 +20,7 @@ $total_records = mysqli_fetch_array($result_count);
 
 $total_records = $total_records['total_records'];
 
-$result = mysqli_query($db->con,"SELECT * FROM `videos` $filter");
+$result = mysqli_query($db->con,"SELECT * FROM `videos` $filter ORDER BY `timestamp` $order");
 
 $vids = [];
 while($row = mysqli_fetch_array($result)) {

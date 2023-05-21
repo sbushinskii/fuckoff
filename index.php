@@ -43,6 +43,8 @@ checkPostStatus();
     $filter = '';
     $type='';
 
+    $order = isset($_GET['order']) ? $_GET['order'] : "DESC";
+
     if(isset($_GET['no_tags'])){
         $result_count = mysqli_query($db->con, "SELECT COUNT(*) as total_records FROM videos where resource_id  NOT IN (select DISTINCT(video_id) FROM video_tag)");
         $total_records = mysqli_fetch_array($result_count);
@@ -51,7 +53,7 @@ checkPostStatus();
         $total_no_of_pages = ceil($total_records / $total_records_per_page);
         $second_last = $total_no_of_pages - 1; // total page minus 1
 
-        $sql_exec = "SELECT * FROM videos where resource_id  NOT IN (select DISTINCT(video_id) FROM video_tag) order by `type` ASC LIMIT $offset, $total_records_per_page";
+        $sql_exec = "SELECT * FROM videos where resource_id  NOT IN (select DISTINCT(video_id) FROM video_tag) order by `type` $order LIMIT $offset, $total_records_per_page";
         $result = mysqli_query($db->con, $sql_exec);
     } else {
         if (isset($_GET['type']) && trim($_GET['type'])) {
@@ -66,7 +68,7 @@ checkPostStatus();
         $total_no_of_pages = ceil($total_records / $total_records_per_page);
         $second_last = $total_no_of_pages - 1; // total page minus 1
 
-        $result = mysqli_query($db->con, "SELECT * FROM `videos` $filter order by `timestamp` DESC LIMIT $offset, $total_records_per_page");
+        $result = mysqli_query($db->con, "SELECT * FROM `videos` $filter order by `timestamp` $order LIMIT $offset, $total_records_per_page");
     }
 
     while($row = mysqli_fetch_array($result)) {
