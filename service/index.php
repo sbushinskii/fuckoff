@@ -20,7 +20,10 @@
                     <button class='btn btn-primary' onclick="document.location='/service/tags_counter.php'" type='submit'>Пересчет использования тегов</button>
                 </td>
                 <td>
-                    <button class='btn btn-primary' onclick="document.location='/service/tags_counter.php'" type='submit'>Пересчет использования тегов</button>
+                    <button class='btn btn-primary' onclick="document.location='/service/photos.php'" type='submit'>Скачать иконки фото</button>
+                </td>
+                <td>
+                    <button class='btn btn-primary' onclick="document.location='/service/today.php'" type='submit'>Что было сегодня?</button>
                 </td>
             </tr>
         </tbody>
