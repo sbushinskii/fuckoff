@@ -1,3 +1,7 @@
+<link type="image/x-icon" sizes="16x16" rel="icon" href="/assets/icon-16.png">
+<link type="image/x-icon" sizes="32x32" rel="icon" href="/assets/icon-32.png">
+<link type="image/x-icon" sizes="96x96" rel="icon" href="/assets/icon-96.png">
+
 <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
 
 <script src="assets/js/bootstrap.bundle.min.js" type="module"></script>

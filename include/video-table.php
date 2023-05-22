@@ -110,6 +110,7 @@ $tags = $db->getTags();
                     </div>
                 </div>
                 <button class='btn btn-primary' type='submit'>Сохранить</button>
+                <button class='btn btn-primary btn-danger' onclick="return removeVideo('<?php echo $row['resource_id'];?>')"  type='button'>Удалить</button>
             </td>
         </tr>
         <?php
@@ -118,6 +119,14 @@ $tags = $db->getTags();
     </tbody>
 </table>
 </form>
+<script type="text/javascript">
+    function removeVideo(resource_id){
+        if(confirm("Уверен?")){
+            document.location='video-delete.php?resource_id='+resource_id
+        }
+        return false;
+    }
+</script>
     <?php
 }
 ?>
