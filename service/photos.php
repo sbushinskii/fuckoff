@@ -33,7 +33,14 @@ foreach ($videosNoPreview as $item) {
             shell_exec("rm $source");
             echo "- ok".PHP_EOL;
         } else {
-            echo "- ffmpeg error".PHP_EOL;
+            shell_exec("/usr/local/bin/convert  '$source' '$output' 2>&1 ");
+            if (file_exists($output) && filesize($output)) {
+                $db->update('videos', 'resource_id', $item['resource_id'], 'preview', $preview_filename);
+                shell_exec("rm $source");
+            } else {
+                echo "- thumbnail processing error".PHP_EOL;
+            }
+
         }
     } else {
         $db->update('videos', 'resource_id', $item['resource_id'], 'skip_preview', '1');
