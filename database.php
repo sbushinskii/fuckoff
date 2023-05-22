@@ -37,9 +37,7 @@ class Database {
             $rows_num=$mysqli->affected_rows;
             $res            =   $mysqli->query('SHOW CREATE TABLE '.$table);
             $TableMLine     =   $res->fetch_row();
-            $content        = "DROP TABLE $table;";
-
-            $content .= (!isset($content) ?  '' : $content) . "\n\n".$TableMLine[1].";\n\n";
+            $content        = (!isset($content) ?  '' : $content) . "\n\n".$TableMLine[1].";\n\n";
 
             for ($i = 0, $st_counter = 0; $i < $fields_amount;   $i++, $st_counter=0)
             {
