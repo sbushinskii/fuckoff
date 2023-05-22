@@ -9,10 +9,14 @@ $templates = [
 ];
 
 //$years = range(1996, date('Y'));
-if(isset($argv[1])){
-    $years = [$argv[1]];
+if(isset($_GET['mode'])&&$_GET['mode'] == 'light') {
+    $years = [2023];
 } else {
-    $years = [1996, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023];
+    if (isset($argv[1])) {
+        $years = [$argv[1]];
+    } else {
+        $years = [1996, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023];
+    }
 }
 
 $DB = new Database();
