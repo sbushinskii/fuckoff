@@ -58,16 +58,16 @@ $tags = $db->getTags();
             <td>
                 <?php
                     $preview = "/images/".$row['preview'];
-                    $skip_preview = true;
-                    if(file_exists($preview)){
-                        $skip_preview = false;
-                    }
+                    $show_preview = file_exists($_SERVER['DOCUMENT_ROOT'] . '/' . $preview);
                 ?>
-                <?php if(!$skip_preview || !$row['skip_preview']){ ?>
+
                 <a target='_blank' href='<?php echo $row['public_url'];?>'>
-                    <img height="150px" src="images/<?php echo $row['preview'];?>"><br>
+                    <?php if($show_preview){ ?>
+                        <img height="150px" src="images/<?php echo $row['preview'];?>"><br>
+                    <?php }else{ ?>
+                        <img height="150px" src="assets/nophoto.jpg"><br>
+                    <?php }?>
                 </a>
-                <?php } ?>
                 <input type="file" name="preview">
             </td>
             <td>
