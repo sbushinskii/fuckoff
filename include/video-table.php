@@ -16,6 +16,7 @@ $tags = $db->getTags();
 <table class="table table-striped table-bordered">
     <thead>
     <tr>
+        <th></th>
         <th>Дата
             <a href="<?php echo $_SERVER['SCRIPT_NAME'];?>?order=<?php echo $order;?>" class="text-decoration-none">
                 <?php if($order == 'ASC') { ?>
@@ -45,6 +46,9 @@ $tags = $db->getTags();
         $row = $row['video'];
         ?>
         <tr>
+            <td class="align-middle">
+                <input type="checkbox" name="video_id" value="<?php echo $row['resource_id'];?>">
+            </td>
             <td>
                 <?php echo $row['date'];?><br>
                 <a target='_blank' href="video-edit.php?resource_id=<?php echo $row['resource_id'];?>">
@@ -119,6 +123,12 @@ $tags = $db->getTags();
     </tbody>
 </table>
 </form>
+
+<form action="video-delete.php" method="POST">
+    <input type="hidden" name="videos_to_delete" id="videos_to_delete">
+    <input type="submit" value="Удалить отмеченные">
+</form>
+
 <script type="text/javascript">
     function removeVideo(resource_id){
         if(confirm("Уверен?")){
