@@ -26,7 +26,7 @@
                     <button class='btn btn-primary' onclick="document.location='/service/photos.php'" type='submit'>Скачать иконки фото</button>
                 </td>
                 <td>
-                    <button class='btn btn-primary' onclick="document.location='/service/today.php'" type='submit'>Что было сегодня?</button>
+                    <button class='btn btn-primary' onclick="document.location='/service/last_moments_import.php'" type='submit'>Последний импорт моментов когда был</button>
                 </td>
             </tr>
         </tbody>

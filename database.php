@@ -17,6 +17,13 @@ class Database {
         mysqli_set_charset($this->con,"utf8");
     }
 
+    function getLastMomentImported(){
+        $sql = "select date, name from videos where type='moments' order by id DESC LIMIT 1;";
+        $result = mysqli_query($this->con, $sql);
+        $last_moment_imported = mysqli_fetch_array($result);
+        return $last_moment_imported;
+    }
+
     function exportDB($backup_name=false )
     {
         if(file_exists(__DIR__ . '/dev')) {
