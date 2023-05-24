@@ -46,5 +46,8 @@ foreach ($videosNoPreview as $item) {
         $db->update('videos', 'resource_id', $item['resource_id'], 'skip_preview', '1');
         echo " - Skip preview ...". PHP_EOL;
     }
-
 }
+
+echo "Процесс завершен. Переход обратно через 2 секунды";
+echo "<meta http-equiv=\"refresh\" content=\"2;url=".$_SERVER['HTTP_REFERER']."\"/>";
+exit;
