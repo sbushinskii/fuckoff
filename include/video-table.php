@@ -1,9 +1,6 @@
 <?php
-
 $tags = $db->getTags();
-?>
-
-<?php if(!empty($vids)){
+if(!empty($vids)){
     $order = isset($_GET['order']) ? $_GET['order'] : 'DESC';
     if($order == 'DESC') {
         $order = 'ASC';

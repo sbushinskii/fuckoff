@@ -1,0 +1,25 @@
+Index: service/last_moments_import.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/service/last_moments_import.php b/service/last_moments_import.php
+new file mode 100644
+--- /dev/null	(date 1684960009540)
++++ b/service/last_moments_import.php	(date 1684960009540)
+@@ -0,0 +1,15 @@
++<?php
++require_once '../database.php';
++$db = new Database();
++$record = $db->getLastMomentImported();
++if(is_array($record)){
++    echo "<h1>Последнее импортированное видео из моментов:</h1>";
++    echo $record['date'] . ' - '. $record['name'];
++} else {
++    echo "Что-то пошло не так";
++}
++?>
++<br><br>
++<a href="<?php echo $_SERVER['HTTP_REFERER'];?>">Вернуться назад</a>
++
++

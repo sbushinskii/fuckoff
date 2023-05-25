@@ -31,37 +31,19 @@ while($row = mysqli_fetch_array($result)) {
     ];
 }
 ?>
-<!doctype html>
-<html lang="en">
+<html>
 <head>
-    <title>Видосы</title>
     <?php require_once 'header.php';?>
 </head>
 <body>
-<section class="ftco-section">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div >
-                <?php require_once 'nav.php';?>
-            </div>
+<div >
+<?php require_once 'nav.php';?>
+<h1>Видео Сегодня</h1>
 
-            <div class="row">
-                <div class="col-md-12">
-                    <?php require_once 'include/table.php';?>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <button onclick="document.location='today.php?send=true'" class='btn btn-primary' type='submit'>Отправить в телеграм</button>
-                </div>
-            </div>
-        </div>
-</section>
+<?php require_once 'include/video-table.php';?>
 
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/popper.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
-<script src="assets/js/main.js"></script>
+<button onclick="document.location='today.php?send=true'" class='btn btn-primary' type='submit'>Отправить в телеграм</button>
 
+</div>
 </body>
 </html>

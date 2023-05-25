@@ -1,11 +1,11 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Видосы</title>
+    <title>Сервис</title>
     <?php require_once '../header.php';?>
 </head>
 <body>
-<section class="ftco-section">
+
     <div class="container">
         <div class="row justify-content-center">
             <div >
@@ -39,14 +39,8 @@
                 </div>
             </div>
         </div>
-
     </div>
-</section>
 
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/popper.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
-<script src="assets/js/main.js"></script>
 
 </body>
 </html>

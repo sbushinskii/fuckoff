@@ -61,7 +61,7 @@ if($search) {
                 <?php require_once 'nav.php';?>
             </div>
 
-
+            <div class="row">
                 <div class="col-md-12">
                     <div class="table">
                         <div class="md-form mt-0">
@@ -71,20 +71,16 @@ if($search) {
                         </div>
                     </div>
                     <?php if(!empty($vids)){ ?>
-                        <h4>
-                            Найдено <?php echo $total_records;?> записей
-                        </h4>
-                        <?php require_once 'include/table.php';?>
-
+                    <h4>
+                        Найдено <?php echo $total_records;?> записей
+                    </h4>
+                    <?php require_once 'include/table.php';?>
                     <?php } ?>
                 </div>
-                <div class="col-md-12">
-                    <?php require_once 'include/pagination.php';?>
-                </div>
-
+            </div>
         </div>
 </section>
-
+<button onclick="document.location='today.php?send=true'" class='btn btn-primary' type='submit'>Отправить в телеграм</button>
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/popper.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>

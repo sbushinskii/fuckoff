@@ -1,6 +1,6 @@
 <div class="header-nav">
     <?php if($_SERVER['SCRIPT_NAME']=='/today.php') { ?>
-        <h2>Сегодня</h2>
+        <h2><u>Сегодня</u></h2>
         <?php
     } else { ?>
         <a href="/today.php">
@@ -11,7 +11,7 @@
     ?>
 
     <?php if($_SERVER['SCRIPT_NAME']=='/index.php') { ?>
-        <h2>Все</h2>
+        <h2><u>Все</u></h2>
     <?php
     } else { ?>
         <a href="/index.php">
@@ -22,7 +22,7 @@
     ?>
 
     <?php if($_SERVER['SCRIPT_NAME']=='/tags.php') { ?>
-        <h2>Тэги</h2>
+        <h2><u>Тэги</u></h2>
         <?php
     } else { ?>
         <a href="/tags.php">
@@ -33,7 +33,7 @@
     ?>
 
     <?php if($_SERVER['SCRIPT_NAME']=='/search.php') { ?>
-        <h2>Поиск</h2>
+        <h2><u>Поиск</u></h2>
         <?php
     } else { ?>
         <a href="/search.php">
@@ -43,7 +43,7 @@
     }
     ?>
     <?php if($_SERVER['SCRIPT_NAME']=='/service/index.php') { ?>
-        <h2>Сервис</h2>
+        <h2><u>Сервис</u></h2>
         <?php
     } else { ?>
         <a href="/service/index.php">

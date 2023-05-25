@@ -1,12 +1,14 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="/assets/css/style.css">
+
 <link type="image/x-icon" sizes="16x16" rel="icon" href="/assets/icon-16.png">
 <link type="image/x-icon" sizes="32x32" rel="icon" href="/assets/icon-32.png">
 <link type="image/x-icon" sizes="96x96" rel="icon" href="/assets/icon-96.png">
 
-<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-
-<script src="assets/js/bootstrap.bundle.min.js" type="module"></script>
-<script src="assets/js/Sortable.min.js" type="module"></script>
-<script src="assets/js/bs-companion.min.js" type="module"></script>
+<script src="/assets/js/bootstrap.bundle.min.js" type="module"></script>
+<script src="/assets/js/Sortable.min.js" type="module"></script>
+<script src="/assets/js/bs-companion.min.js" type="module"></script>
 <script type="module">
     import Tags from "./assets/js/tags.js";
 
