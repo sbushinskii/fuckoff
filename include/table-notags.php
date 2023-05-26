@@ -15,7 +15,6 @@ if($order == 'DESC') {
     <table class="table table-striped">
         <thead>
         <tr>
-            <th class="d-md-none d-lg-block"></th>
             <th>Дата
                 <a href="<?php echo $_SERVER['SCRIPT_NAME'];?>?order=<?php echo $order;?>" class="text-decoration-none">
                     <?php if($order == 'ASC') { ?>
@@ -32,7 +31,6 @@ if($order == 'DESC') {
                 </a>
             </th>
             <th>Инфо</th>
-            <th class="d-md-none d-lg-block">Тэги</th>
         </tr>
         </thead>
         <tbody>
@@ -42,15 +40,13 @@ if($order == 'DESC') {
             $row = $row['video'];
             ?>
             <tr>
-                <td class="align-middle d-md-none d-lg-block">
-                    <input type="checkbox" name="video_id" value="<?php echo $row['resource_id'];?>">
-                </td>
                 <td class="col-3">
                     <?php
                     $preview = "/images/".$row['preview'];
-                    $show_preview = file_exists($_SERVER['DOCUMENT_ROOT'] . '/' . $preview) && !is_dir($_SERVER['DOCUMENT_ROOT'] . '/' . $preview);
+                    $show_preview = file_exists($_SERVER['DOCUMENT_ROOT'] . '/' . $preview) && !is_dir($_SERVER['DOCUMENT_ROOT'] . '/' . $preview)
 
-                    echo $row['date'];?><br>
+                    ?>
+                    <?php echo $row['date'];?><br>
 
                     <a target='_blank' href='<?php echo $row['public_url'];?>' title="Смотреть на Диске">
                         <?php if($show_preview){ ?>
@@ -83,25 +79,6 @@ if($order == 'DESC') {
                 </td>
 
                 <td class="d-md-none d-lg-block">
-                    <input type="hidden" name="resource_id[]" value="<?php echo $row['resource_id'];?>">
-                    <div class='col-sm-9'>
-                        <div>
-                            <?php
-                            $tag_input_name = 'tags_new['. $row['resource_id'] .'][]';
-                            ?>
-                            <select class='form-select' id='validationTagsNewSame' name='<?php echo $tag_input_name;?>' multiple data-allow-new='true' data-allow-same='true'>
-                                <option disabled hidden value=''>Выбор тэга...</option>
-                                <?php foreach ($tags as $tag) {
-                                    $is_selected = in_array($tag['id'], $assignedTags);
-                                    ?>
-                                    <option value="<?php echo $tag["id"];?>" <?php echo ($is_selected) ? " selected ":"";?>><?php echo $tag["title"];?></option>
-                                    <?php
-                                }
-                                ?>
-                            </select>
-                        </div>
-                    </div>
-                    <button class='btn btn-primary' type='submit'>Сохранить</button>
                     <button class='btn btn-primary btn-danger' onclick="return removeVideo('<?php echo $row['resource_id'];?>')"  type='button'>Удалить</button>
                 </td>
             </tr>

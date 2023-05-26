@@ -14,7 +14,7 @@ $tags = $db->getTags();
 <body>
 <section class="ftco-section">
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="justify-content-center">
             <div >
                 <?php require_once 'nav.php';?>
             </div>

@@ -1,12 +1,8 @@
 <?php
-ini_set('display_errors', '1');
-ini_set('display_startup_errors', '1');
-error_reporting(E_ALL);
-
 require_once 'database.php';
 require_once 'functions.php';
 $db = new Database();
-
+$formProcessed = false;
 if(!empty($_POST)) {
     $video_id = $_POST['resource_id'];
     $db->clearTags($video_id);
@@ -58,6 +54,7 @@ if(!empty($_POST)) {
     }
     $db->update('videos','resource_id', $video_id, 'name', $_POST['name']);
     $db->update('videos','resource_id', $video_id, 'type', $_POST['type']);
+    $formProcessed = true;
 }
 
 
@@ -67,94 +64,118 @@ $result = mysqli_query($db->con, "SELECT * FROM `videos` $filter");
 $tags = $db->getTags();
 $row = mysqli_fetch_array($result);
 
-
 ?>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
+    <title>Видосы</title>
     <?php require_once 'header.php';?>
 </head>
 <body>
-<div >
-
-    <h1>Редактирование Видео</h1>
-    <?php require_once 'nav.php';?>
-
-    <?php
-    $video_active = true;
-    if(!$row) {
-        $video_active = false; ?>
-        <h1>Видео удалено</h1>
+<section class="ftco-section">
+    <div class="container">
+        <?php if($formProcessed) { ?>
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                </symbol>
+            </svg>
+            <div class="alert alert-success d-flex align-items-center" role="alert">
+                <svg class="bi flex-shrink-0" style="margin-right: .5rem!important" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+                <div>
+                    Изменения сохранены
+                </div>
+            </div>
         <?php
-        exit;
-    }
-    $assignedTags = $db->getVideoTagsIds($row['resource_id']);
-    ?>
+        }
+        ?>
 
-    <table class="table table-striped table-bordered">
-        <thead>
-        <tr>
-            <th style='width:150px;'>Дата</th>
-            <th style='width:150px;'>Изображение</th>
-            <th style='width:50px;'>Название</th>
-            <th style='width:50px;'>Путь в облаке</th>
-            <th style='width:50px;'>Тип</th>
-            <th style='width:450px;'>Тэги</th>
-        </tr>
-        </thead>
-        <tbody>
+        <div class="justify-content-center">
+            <div>
+                <?php
+                $video_active = true;
+                if(!$row) {
+                    $video_active = false; ?>
+                    <h1>Видео удалено</h1>
+                    <?php
+                    exit;
+                }
+                $assignedTags = $db->getVideoTagsIds($row['resource_id']);
+                ?>
+                <?php require_once 'nav.php';?>
+                <h1>Редактирование Видео</h1>
+            </div>
+        </div>
 
-            <form class='needs-validation' method='POST' enctype="multipart/form-data">
-                <tr>
-                    <td>
-                        <?php echo $row['date'];?><br><br>
-                        <a target='_blank' href='<?php echo $row['public_url'];?>'>
-                            Ссылка<br><br>
-                        </a>
-                    </td>
-                    <td>
-                        <?php if(!$row['skip_preview']){ ?>
-                            <img height="150px" src="images/<?php echo $row['preview'];?>"><br>
-                        <?php } ?>
-                        <input type="file" name="preview">
-                    </td>
-                    <td>
-                        <input type="text" name="name" value="<?php echo $row['name'];?>">
-                    </td>
-                    <td>
-                        <textarea name="path"><?php echo $row['path'];?></textarea>
-                        <input type="hidden" name="old_path" value="<?php echo $row['path'];?>">
-                    </td>
-                    <td>
-                        <select name="type" class="ignore-tags">
-                            <option value="common" <?php echo ($row['type']=='common') ? " selected ":""; ?>>Общее</option>
-                            <option value="moments" <?php echo ($row['type']=='moments') ? " selected ":""; ?>>Моменты</option>
-                        </select>
-                    </td>
-                    <td>
-                        <input type="hidden" name="resource_id" value="<?php echo $row['resource_id'];?>">
-                        <div class='col-sm-9'>
-                            <div>
-                                <select class='form-select' id='validationTagsNewSame' name='tags_new[]' multiple data-allow-new='true' data-allow-same='true'>
-                                    <option disabled hidden value=''>Выбор тэга...</option>
-                                    <?php foreach ($tags as $tag) {
-                                        $is_selected = in_array($tag['id'], $assignedTags);
-                                        ?>
-                                        <option value="<?php echo $tag["id"];?>" <?php echo ($is_selected) ? " selected ":"";?>><?php echo $tag["title"];?></option>
-                                        <?php
-                                    }
-                                    ?>
-                                </select>
+        <div class="row">
+            <div class="col-md-12">
+                    <form class='needs-validation' method='POST' enctype="multipart/form-data">
+                        <div class="form-group">
+                            <a target='_blank' href='<?php echo $row['public_url'];?>'>
+                                <?php if(!$row['skip_preview']){ ?>
+                                    <img height="150px" src="images/<?php echo $row['preview'];?>"><br>
+                                <?php } else { ?>
+                                    <img height="150px" src="assets/nophoto.jpg"><br>
+                                <?php } ?>
+                            </a>
+                        </div>
+                        <div class="form-group">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="customFile">
+                                <label class="custom-file-label" for="customFile">Choose file</label>
                             </div>
                         </div>
-                        <button class='btn btn-primary' type='submit'>Сохранить</button>
-                        <button class='btn btn-primary btn-danger' onclick="return removeVideo()" type='button'>Удалить</button>
 
-                    </td>
-                </tr>
-            </form>
-        </tbody>
-    </table>
-</div>
+                        <div class="form-group">
+                            <label for="filename">Название файла</label>
+                            <input name="name" class="form-control" id="filename" placeholder="Название файла" value="<?php echo $row['name'];?>">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Путь в облаке</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" name="path"><?php echo $row['path'];?></textarea>
+                            <input type="hidden" name="old_path" value="<?php echo $row['path'];?>">
+                        </div>
+
+                        <div class="form-group row col-md-4">
+                            <label for="inputState">Тип</label>
+                            <select id="inputState" class="form-control ignore-tags" name="type">
+                                <option value="common" <?php echo ($row['type']=='common') ? " selected ":""; ?>>Общее</option>
+                                <option value="moments" <?php echo ($row['type']=='moments') ? " selected ":""; ?>>Моменты</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                                <input type="hidden" name="resource_id" value="<?php echo $row['resource_id'];?>">
+
+                                    <div>
+                                        <select class='form-select' id='validationTagsNewSame' name='tags_new[]' multiple data-allow-new='true' data-allow-same='true'>
+                                            <option disabled hidden value=''>Выбор тэга...</option>
+                                            <?php foreach ($tags as $tag) {
+                                                $is_selected = in_array($tag['id'], $assignedTags);
+                                                ?>
+                                                <option value="<?php echo $tag["id"];?>" <?php echo ($is_selected) ? " selected ":"";?>><?php echo $tag["title"];?></option>
+                                                <?php
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+
+                        </div>
+                        <div class="form-group">
+                                <button class='btn btn-primary' type='submit'>Сохранить</button>
+                                <button class='btn btn-primary btn-danger' onclick="return removeVideo()" type='button'>Удалить</button>
+                        </div>
+                    </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/popper.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/main.js"></script>
+
 <script type="text/javascript">
     function removeVideo(){
         if(confirm("Уверен?")){
