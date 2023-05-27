@@ -50,10 +50,12 @@ if($order == 'DESC') {
                     $preview = "/images/".$row['preview'];
                     $show_preview = file_exists($_SERVER['DOCUMENT_ROOT'] . '/' . $preview) && !is_dir($_SERVER['DOCUMENT_ROOT'] . '/' . $preview);
 
-                    echo $row['date'];?><br>
+                    echo $row['date'];
+                    $preview_file = '/images/'. $row['preview'];
+                    ?><br>
 
                     <a target='_blank' href='<?php echo $row['public_url'];?>' title="Смотреть на Диске">
-                        <?php if($show_preview){ ?>
+                        <?php if(!is_dir($preview_file) && file_exists($preview_file)){ ?>
                             <img height="150px" src="images/<?php echo $row['preview'];?>"><br>
                         <?php }else{ ?>
                             <img height="150px" src="assets/nophoto.jpg"><br>

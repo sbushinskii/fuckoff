@@ -64,6 +64,7 @@ $result = mysqli_query($db->con, "SELECT * FROM `videos` $filter");
 $tags = $db->getTags();
 $row = mysqli_fetch_array($result);
 
+$preview_file = '/images/'. $row['preview'];
 ?>
 <!doctype html>
 <html lang="en">
@@ -112,7 +113,7 @@ $row = mysqli_fetch_array($result);
                     <form class='needs-validation' method='POST' enctype="multipart/form-data">
                         <div class="form-group">
                             <a target='_blank' href='<?php echo $row['public_url'];?>'>
-                                <?php if(!$row['skip_preview']){ ?>
+                                <?php if(!is_dir($preview_file) && file_exists($preview_file)){ ?>
                                     <img height="150px" src="images/<?php echo $row['preview'];?>"><br>
                                 <?php } else { ?>
                                     <img height="150px" src="assets/nophoto.jpg"><br>
