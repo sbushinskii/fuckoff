@@ -9,6 +9,7 @@ if($order == 'DESC') {
 } else {
     $order = 'DESC';
 }
+$preview_file =  IMG_DIR . $row['preview'];
 ?>
 
 <div class="table-wrap">
@@ -49,7 +50,7 @@ if($order == 'DESC') {
                     <?php echo $row['date'];?><br>
 
                     <a target='_blank' href='<?php echo $row['public_url'];?>' title="Смотреть на Диске">
-                        <?php if($show_preview){ ?>
+                        <?php if(!is_dir($preview_file) && file_exists($preview_file)){ ?>
                             <img height="150px" src="images/<?php echo $row['preview'];?>"><br>
                         <?php }else{ ?>
                             <img height="150px" src="assets/nophoto.jpg"><br>

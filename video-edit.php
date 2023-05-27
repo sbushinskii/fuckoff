@@ -64,7 +64,7 @@ $result = mysqli_query($db->con, "SELECT * FROM `videos` $filter");
 $tags = $db->getTags();
 $row = mysqli_fetch_array($result);
 
-$preview_file = '/images/'. $row['preview'];
+$preview_file =  IMG_DIR . $row['preview'];
 ?>
 <!doctype html>
 <html lang="en">

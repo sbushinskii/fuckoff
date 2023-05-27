@@ -51,7 +51,8 @@ if($order == 'DESC') {
                     $show_preview = file_exists($_SERVER['DOCUMENT_ROOT'] . '/' . $preview) && !is_dir($_SERVER['DOCUMENT_ROOT'] . '/' . $preview);
 
                     echo $row['date'];
-                    $preview_file = '/images/'. $row['preview'];
+                    $preview_file =  IMG_DIR . $row['preview'];
+
                     ?><br>
 
                     <a target='_blank' href='<?php echo $row['public_url'];?>' title="Смотреть на Диске">

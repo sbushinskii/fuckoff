@@ -17,7 +17,9 @@ if(isset($_GET['search'])) {
 $search = (isset($_SESSION['search']) && trim($_SESSION['search'])) ? $_SESSION['search'] : false;
 
 $vids = [];
+$show_pagaintion = false;
 if($search) {
+    $show_pagaintion = true;
     if (isset($_GET['page_no']) && $_GET['page_no']!="") {
         $page_no = $_GET['page_no'];
     } else {
@@ -85,10 +87,11 @@ if($search) {
                     </div>
                     <?php require_once 'include/table-notags.php';?>
                 </div>
+            <?php if($show_pagaintion) { ?>
                 <div class="col-md-12">
                     <?php require_once 'include/pagination.php';?>
                 </div>
-
+            <?php } ?>
         </div>
 </section>
 

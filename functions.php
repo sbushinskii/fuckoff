@@ -1,4 +1,5 @@
 <?php
+define('IMG_DIR', __DIR__ . '/images/');
 class Disk
 {
     private $token;
