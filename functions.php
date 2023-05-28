@@ -1,4 +1,6 @@
 <?php
+session_start();
+define('SITE_URL', 'http://'.$_SERVER['SERVER_NAME'] . '/');
 define('IMG_DIR', __DIR__ . '/images/');
 class Disk
 {
@@ -488,4 +490,22 @@ function checkPostStatus(){
             }
         }
     }
+}
+
+function setFlashMessage($message, $type = 'info') {
+    $_SESSION['flash_message'] = [
+        'type' => $type,
+        'message' => $message
+    ];
+}
+function getFlashMessage(){
+    if(isset($_SESSION['flash_message'])) {
+        $data = [
+            'type'=>$_SESSION['flash_message']['type'],
+            'message'=>$_SESSION['flash_message']['message']
+        ];
+        unset($_SESSION['flash_message']);
+        return$data;
+    }
+    return false;
 }

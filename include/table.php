@@ -11,11 +11,10 @@ if($order == 'DESC') {
 }
 ?>
 
-<div class="table-wrap">
+<div>
     <table class="table table-striped">
         <thead>
         <tr>
-            <th class="d-md-none d-lg-block"></th>
             <th>Дата
                 <a href="<?php echo $_SERVER['SCRIPT_NAME'];?>?order=<?php echo $order;?>" class="text-decoration-none">
                     <?php if($order == 'ASC') { ?>
@@ -32,7 +31,6 @@ if($order == 'DESC') {
                 </a>
             </th>
             <th>Инфо</th>
-            <th class="d-md-none d-lg-block">Тэги</th>
         </tr>
         </thead>
         <tbody>
@@ -42,10 +40,7 @@ if($order == 'DESC') {
             $row = $row['video'];
             ?>
             <tr>
-                <td class="align-middle d-md-none d-lg-block">
-                    <input type="checkbox" name="video_id" value="<?php echo $row['resource_id'];?>">
-                </td>
-                <td class="col-3">
+                <td class="col-6">
                     <?php
                     $preview = "/images/".$row['preview'];
                     $show_preview = file_exists($_SERVER['DOCUMENT_ROOT'] . '/' . $preview) && !is_dir($_SERVER['DOCUMENT_ROOT'] . '/' . $preview);
@@ -62,12 +57,9 @@ if($order == 'DESC') {
                             <img height="150px" src="assets/nophoto.jpg"><br>
                         <?php }?>
                     </a>
-                    <input type="file" name="preview">
                 </td>
-                <td  class="col-3">
-                    Заголовок:  <a target='_blank' href="video-edit.php?resource_id=<?php echo $row['resource_id'];?>">
-                        <?php echo $row['name'];?> (ред.)
-                    </a><br>
+                <td  class="col-6">
+                    Заголовок: <?php echo $row['name'];?><br>
                     Категория: <?php echo ($row['type']=='common')?"Видео":"Приятные моменты";?><br>
                     Мише: <?php echo $row['Misha'];?><br>
                     Вере: <?php echo $row['Vera'];?><br>
@@ -83,29 +75,15 @@ if($order == 'DESC') {
                         }
                         ?>
                     </div>
-                </td>
-
-                <td class="d-md-none d-lg-block">
-                    <input type="hidden" name="resource_id[]" value="<?php echo $row['resource_id'];?>">
-                    <div class='col-sm-9'>
-                        <div>
-                            <?php
-                            $tag_input_name = 'tags_new['. $row['resource_id'] .'][]';
-                            ?>
-                            <select class='form-select' id='validationTagsNewSame' name='<?php echo $tag_input_name;?>' multiple data-allow-new='true' data-allow-same='true'>
-                                <option disabled hidden value=''>Выбор тэга...</option>
-                                <?php foreach ($tags as $tag) {
-                                    $is_selected = in_array($tag['id'], $assignedTags);
-                                    ?>
-                                    <option value="<?php echo $tag["id"];?>" <?php echo ($is_selected) ? " selected ":"";?>><?php echo $tag["title"];?></option>
-                                    <?php
-                                }
-                                ?>
-                            </select>
-                        </div>
+                    <div>
+                        <a target='_blank' href="video-edit.php?resource_id=<?php echo $row['resource_id'];?>">
+                            <button class='btn btn-primary btn-primary ' type='button'>Редактировать</button>
+                        </a>
+                        <a target='_blank' href='<?php echo $row['public_url'];?>' title="Смотреть на Диске">
+                            <button class='btn btn-primary btn-info' type='button'>Cмотреть</button>
+                        </a>
+                        <button class='btn btn-primary btn-danger' onclick="return removeVideo('<?php echo $row['resource_id'];?>')"  type='button'>Удалить</button>
                     </div>
-                    <button class='btn btn-primary' type='submit'>Сохранить</button>
-                    <button class='btn btn-primary btn-danger' onclick="return removeVideo('<?php echo $row['resource_id'];?>')"  type='button'>Удалить</button>
                 </td>
             </tr>
             <?php
@@ -114,3 +92,11 @@ if($order == 'DESC') {
         </tbody>
     </table>
 </div>
+<script type="text/javascript">
+    function removeVideo(resource_id){
+        if(confirm("Уверен?")){
+            document.location='video-delete.php?resource_id='+resource_id
+        }
+        return false;
+    }
+</script>
