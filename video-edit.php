@@ -43,7 +43,8 @@ if(!empty($_POST)) {
     if($_POST['path'] !== $_POST['old_path']) {
         $new_path = $_POST['path'];
         $disk = new Disk();
-        $disk->rename(urlencode($_POST['old_path']), urlencode($new_path));
+        $response = $disk->rename(urlencode($_POST['old_path']), urlencode($new_path));
+        setFlashMessage($response);
 
         $date_meta = explode(' ', $new_path)[0];
         $date = strtotime($date_meta);
