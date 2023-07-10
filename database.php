@@ -40,6 +40,8 @@ class Database {
 
         foreach($target_tables as $table)
         {
+            $mysqli->query('DROP '.$table);
+
             $result         =   $mysqli->query('SELECT * FROM '.$table);
             $fields_amount  =   $result->field_count;
             $rows_num=$mysqli->affected_rows;
