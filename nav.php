@@ -21,7 +21,7 @@
 ?>
 
 <div class="header-nav">
-    <?php if($_SERVER['SCRIPT_NAME']=='/today.php') { ?>
+    <?php if($_SERVER['SCRIPT_NAME']=='/index.php') { ?>
         <h2><u>Сегодня</u></h2>
         <?php
     } else { ?>
@@ -32,7 +32,7 @@
     }
     ?>
 
-    <?php if($_SERVER['SCRIPT_NAME']=='/index.php') { ?>
+    <?php if($_SERVER['SCRIPT_NAME']=='/all.php') { ?>
         <h2><u>Все</u></h2>
     <?php
     } else { ?>

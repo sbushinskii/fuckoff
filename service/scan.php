@@ -1,4 +1,5 @@
 <?php
+ini_set('display_errors', 1);
 require_once '../database.php';
 require_once '../functions.php';
 $disk = new Disk();
@@ -28,7 +29,7 @@ $Misha_bd = '2013-01-15';
 $Vera_bd  = '2016-04-19';
 $db = [];
 $total_files = 0;
-$debug = false;
+$debug = true;
 foreach ($templates as $key=> $template) {
     if($debug) {
         echo "Scanning $key: " . $template . PHP_EOL;

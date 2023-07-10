@@ -4,66 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3d20f51f-ca6b-46cb-a486-949e67a58c02" name="Default Changelist" comment="so fucking what">
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Default_Changelist.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Default_Changelist/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Default_Changelist1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Default_Changelist1/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/css/bootstrap/_media.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/css/bootstrap/mixins/_border-radius.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/css/bootstrap/mixins/_screen-reader.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/css/bootstrap/mixins/_visibility.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/css/bootstrap/utilities/_stretched-link.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/font-awesome.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/js/bootstrap.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/js/jquery.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/js/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/js/popper.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dev" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/13bf733ea410055e353e27805c42fac7.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/154b36871dfeedc0e11a2952bc34385b.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/187ddf3516c912aaa8d7f501d80950fd.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/36f953678875f1c88b281206fa08ce41.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/3b5f13a85a3831b270e06fbe40787528.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/3e59536d22bd36556c59c338f099d027.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/437777e5c1b0e8fce5a3eb59b3d8100d.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/46ac5ab4aa07470d14a27b3c433069f4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/51ee9df6436b146bf5ad12e9aab2f6cb.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/74dfb9e443cd6614670acf258948c99d.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/802cc06f5ba60794c32f8c2d29cb820a.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/85dd804b715d3fa8f32816683028e31c.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/8ab118cef37e5015b7fef36c74cdc072.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/957fb729e0b2b12ec980497ee8749a13.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/9824408627c76f9d2774a5685c2c5099.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/ac3a6e8bbdb572c99ddb6650c8f0250c.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/af501990ee68ef5845e61bb3c5bc8f84.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/e3916d4379e2b7829272c0352adddd0d.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/e4f20dbdabd6409d63fb89373f0845c7.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/f319dbfb1ef81efa58d3a9cbbe0e3f4a.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/fd4358b41bb9d49ae5d14989abf4871a.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/index-old.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python/calc.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python/personaj.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/search-old.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/index-щдв.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tags-old.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/today-old.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/today.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/today.iml" afterDir="false" />
+    <list default="true" id="3d20f51f-ca6b-46cb-a486-949e67a58c02" name="Default Changelist" comment="up">
+      <change afterPath="$PROJECT_DIR$/all.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/bootstrap.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/video-table.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/video-table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/json/playlist_common.json" beforeDir="false" afterPath="$PROJECT_DIR$/json/playlist_common.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nav.php" beforeDir="false" afterPath="$PROJECT_DIR$/nav.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/search.php" beforeDir="false" afterPath="$PROJECT_DIR$/search.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/service/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tags.php" beforeDir="false" afterPath="$PROJECT_DIR$/tags.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/today.php" beforeDir="false" afterPath="$PROJECT_DIR$/today.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/scan.php" beforeDir="false" afterPath="$PROJECT_DIR$/service/scan.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/today.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,26 +57,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/sbushinskii/workspace/today2/service",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/sbushinskii/workspace/today2/service&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/service" />
+      <recent name="$PROJECT_DIR$/include" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/assets/js" />
       <recent name="$PROJECT_DIR$/assets/css" />
-      <recent name="$PROJECT_DIR$/test" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -186,63 +133,10 @@
       <workItem from="1684869586760" duration="652000" />
       <workItem from="1684920325173" duration="67000" />
       <workItem from="1684955957696" duration="8095000" />
-      <workItem from="1685045325374" duration="2127000" />
-    </task>
-    <task id="LOCAL-00016" summary="LOL">
-      <created>1682973216936</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1682973216936</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Fix bootstrap">
-      <created>1683008243707</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1683008243707</updated>
-    </task>
-    <task id="LOCAL-00018" summary="SOrt by tags">
-      <created>1683009216454</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1683009216454</updated>
-    </task>
-    <task id="LOCAL-00019" summary="DB">
-      <created>1683009398796</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1683009398796</updated>
-    </task>
-    <task id="LOCAL-00020" summary="DB">
-      <created>1683009460984</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1683009460984</updated>
-    </task>
-    <task id="LOCAL-00021" summary="DB">
-      <created>1683058507754</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1683058507754</updated>
-    </task>
-    <task id="LOCAL-00022" summary="DB">
-      <created>1683144115930</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1683144115930</updated>
-    </task>
-    <task id="LOCAL-00023" summary="DB">
-      <created>1683144318354</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1683144318354</updated>
+      <workItem from="1685045325374" duration="7660000" />
+      <workItem from="1685214090040" duration="5397000" />
+      <workItem from="1685994721681" duration="822000" />
+      <workItem from="1688976837670" duration="525000" />
     </task>
     <task id="LOCAL-00024" summary="DB">
       <created>1683144340116</created>
@@ -531,11 +425,78 @@
       <option name="project" value="LOCAL" />
       <updated>1684961302238</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="new design ept">
+      <created>1685047514747</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1685047514747</updated>
+    </task>
+    <task id="LOCAL-00066" summary="фак оф">
+      <created>1685086860751</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1685086860751</updated>
+    </task>
+    <task id="LOCAL-00067" summary="LOL">
+      <created>1685216715863</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1685216715863</updated>
+    </task>
+    <task id="LOCAL-00068" summary="LOL">
+      <created>1685217165169</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1685217165170</updated>
+    </task>
+    <task id="LOCAL-00069" summary="Fixes">
+      <created>1685304691900</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1685304691901</updated>
+    </task>
+    <task id="LOCAL-00070" summary="up">
+      <created>1685304967484</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1685304967485</updated>
+    </task>
+    <task id="LOCAL-00071" summary="up">
+      <created>1685305512746</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1685305512747</updated>
+    </task>
+    <task id="LOCAL-00072" summary="up">
+      <created>1685305852782</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1685305852782</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -551,9 +512,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="ФАк оф" />
-    <MESSAGE value="Fix bootstrap" />
-    <MESSAGE value="SOrt by tags" />
     <MESSAGE value="DB" />
     <MESSAGE value="Refactoring" />
     <MESSAGE value="Add delete vid function" />
@@ -562,7 +520,6 @@
     <MESSAGE value="я" />
     <MESSAGE value="9999" />
     <MESSAGE value="Added custom preview" />
-    <MESSAGE value="Fixes" />
     <MESSAGE value="Pasha svin" />
     <MESSAGE value="lol3" />
     <MESSAGE value=" photos" />
@@ -572,10 +529,14 @@
     <MESSAGE value="Nice" />
     <MESSAGE value="undo" />
     <MESSAGE value="Corrections" />
-    <MESSAGE value="LOL" />
     <MESSAGE value="LOLАгсл" />
     <MESSAGE value="img added" />
     <MESSAGE value="so fucking what" />
-    <option name="LAST_COMMIT_MESSAGE" value="so fucking what" />
+    <MESSAGE value="new design ept" />
+    <MESSAGE value="фак оф" />
+    <MESSAGE value="LOL" />
+    <MESSAGE value="Fixes" />
+    <MESSAGE value="up" />
+    <option name="LAST_COMMIT_MESSAGE" value="up" />
   </component>
 </project>
