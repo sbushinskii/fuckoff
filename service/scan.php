@@ -99,7 +99,7 @@ foreach ($templates as $key=> $template) {
 
                     if(!$DB->getVideo($resource->md5)) {
                         $DB->insert('videos', $db);
-                        echo "Импортирован ресурс " . $resource->name;
+                        echo "Импортирован ресурс " . $resource->name . PHP_EOL;
                     } else {
 
                     }

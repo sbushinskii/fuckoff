@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3d20f51f-ca6b-46cb-a486-949e67a58c02" name="Default Changelist" comment="up">
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nav.php" beforeDir="false" afterPath="$PROJECT_DIR$/nav.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rescan.sh" beforeDir="false" afterPath="$PROJECT_DIR$/rescan.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tag.php" beforeDir="false" afterPath="$PROJECT_DIR$/tag.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tags.php" beforeDir="false" afterPath="$PROJECT_DIR$/tags.php" afterDir="false" />
+    <list default="true" id="3d20f51f-ca6b-46cb-a486-949e67a58c02" name="Default Changelist" comment="photos">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/database.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/scan.php" beforeDir="false" afterPath="$PROJECT_DIR$/service/scan.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,21 +133,7 @@
       <workItem from="1685045325374" duration="7660000" />
       <workItem from="1685214090040" duration="5397000" />
       <workItem from="1685994721681" duration="822000" />
-      <workItem from="1688976837670" duration="1386000" />
-    </task>
-    <task id="LOCAL-00025" summary="DB">
-      <created>1683640437806</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1683640437806</updated>
-    </task>
-    <task id="LOCAL-00026" summary="Refactoring">
-      <created>1683646396352</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1683646396352</updated>
+      <workItem from="1688976837670" duration="2988000" />
     </task>
     <task id="LOCAL-00027" summary="Add delete vid function">
       <created>1683646765602</created>
@@ -480,7 +464,21 @@
       <option name="project" value="LOCAL" />
       <updated>1688995073186</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="lol">
+      <created>1688995437217</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1688995437217</updated>
+    </task>
+    <task id="LOCAL-00075" summary="photos">
+      <created>1688996340618</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1688996340618</updated>
+    </task>
+    <option name="localTasksCounter" value="76" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -511,8 +509,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="DB" />
-    <MESSAGE value="Refactoring" />
     <MESSAGE value="Add delete vid function" />
     <MESSAGE value="Shutta fucka" />
     <MESSAGE value="added preview" />
@@ -536,6 +532,8 @@
     <MESSAGE value="LOL" />
     <MESSAGE value="Fixes" />
     <MESSAGE value="up" />
-    <option name="LAST_COMMIT_MESSAGE" value="up" />
+    <MESSAGE value="lol" />
+    <MESSAGE value="photos" />
+    <option name="LAST_COMMIT_MESSAGE" value="photos" />
   </component>
 </project>
