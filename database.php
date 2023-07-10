@@ -31,11 +31,12 @@ class Database {
         } else {
             $mysqli = new mysqli('localhost', 'u2036503_default', 'yvgWrM6IT2ZVr66f', 'u2036503_default');
         }
-        $queryTables    = $mysqli->query('SHOW TABLES');
-        while($row = $queryTables->fetch_row())
-        {
-            $target_tables[] = $row[0];
-        }
+//        $queryTables    = $mysqli->query('SHOW TABLES');
+//        while($row = $queryTables->fetch_row())
+//        {
+//            $target_tables[] = $row[0];
+//        }
+        $target_tables = ['videos'];
 
         foreach($target_tables as $table)
         {

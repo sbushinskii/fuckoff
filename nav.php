@@ -36,7 +36,7 @@
         <h2><u>Все</u></h2>
     <?php
     } else { ?>
-        <a href="/index.php">
+        <a href="/all.php">
             <h2>Все</h2>
         </a>
     <?php

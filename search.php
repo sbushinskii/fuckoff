@@ -8,7 +8,6 @@ require_once 'functions.php';
 $db = new Database();
 checkPostStatus();
 
-session_start();
 $vids = false;
 if(isset($_GET['search'])) {
     $_SESSION['search'] = $_GET['search'];
