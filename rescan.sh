@@ -2,4 +2,4 @@
 
 /usr/bin/php 'scan.php'
 /usr/bin/php 'scan.php'
-/usr/bin/php 'today.php'
+/usr/bin/php 'index.php'

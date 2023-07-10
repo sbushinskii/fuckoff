@@ -25,7 +25,7 @@
         <h2><u>Сегодня</u></h2>
         <?php
     } else { ?>
-        <a href="/today.php">
+        <a href="/index.php">
             <h2>Сегодня</h2>
         </a>
         <?php

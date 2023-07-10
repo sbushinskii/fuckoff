@@ -52,7 +52,7 @@ while($row = mysqli_fetch_array($result)) {
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <button onclick="document.location='today.php?send=true'" class='btn btn-primary' type='submit'>Отправить в телеграм</button>
+                    <button onclick="document.location='index.php?send=true'" class='btn btn-primary' type='submit'>Отправить в телеграм</button>
                 </div>
             </div>
         </div>
